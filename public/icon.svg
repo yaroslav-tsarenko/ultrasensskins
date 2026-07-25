@@ -1,0 +1,19 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="ds-wear" x1="16" y1="3" x2="16" y2="30" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#4ade80"/>
+      <stop offset="0.32" stop-color="#a3e635"/>
+      <stop offset="0.55" stop-color="#facc15"/>
+      <stop offset="0.78" stop-color="#fb923c"/>
+      <stop offset="1" stop-color="#ef4444"/>
+    </linearGradient>
+    <linearGradient id="ds-rim" x1="4" y1="4" x2="28" y2="30" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#7C3AED"/>
+      <stop offset="1" stop-color="#22D3EE"/>
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="7" fill="#0E1015"/>
+  <path d="M16 4C16 4 25 14.2 25 20.4C25 25.4 21 28 16 28C11 28 7 25.4 7 20.4C7 14.2 16 4 16 4Z" fill="url(#ds-wear)"/>
+  <path d="M16 4C16 4 25 14.2 25 20.4C25 25.4 21 28 16 28C11 28 7 25.4 7 20.4C7 14.2 16 4 16 4Z" stroke="url(#ds-rim)" stroke-width="1.6" stroke-linejoin="round"/>
+  <path d="M11 20L16 11L21 20" stroke="#0E1015" stroke-opacity="0.85" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

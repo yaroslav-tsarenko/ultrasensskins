@@ -1,0 +1,286 @@
+/*
+ * UltraSensSkin — "Armory Terminal" CS2 marketplace design tokens.
+ *
+ * Concept: a tactical precision instrument meets a premium collector's showcase.
+ * The canvas is a warm-neutral gunmetal graphite (brushed metal / concrete, not
+ * glossy black, not navy). Cards read like machined panels separated by fine
+ * hairlines. The UI stays quiet and industrial so two things pop: each skin's
+ * RARITY color and a single molten-amber SIGNAL accent (CTAs, active, focus,
+ * key numbers). CS2 rarity colors stay first-class so collectors read cards
+ * instantly.
+ *
+ * Token NAMES are kept stable so every existing component keeps working while
+ * the palette is fully re-skinned. Consumed by @theme in globals.css. Dark
+ * (graphite) is the primary, default theme; "Daylight" (paper-steel) is a
+ * first-class light opt-in.
+ */
+
+/* ── DEFAULT (dark, gunmetal-graphite) — primary theme ────────────────── */
+:root {
+  /* ── Signal accent — molten amber (armory / ammunition) ─────────────── */
+  --color-primary: #FF7A1A;          /* molten amber — CTAs, buy, active, focus */
+  --color-primary-hover: #FF9036;
+  --color-primary-tint: rgba(255, 122, 26, 0.14);
+  --color-primary-glow: rgba(255, 122, 26, 0.42);
+  --color-primary-fg: #140A03;       /* warm near-black — reads on amber fills */
+
+  --color-accent: #C7CCD6;           /* brushed steel — metal highlights, chrome */
+  --color-accent-hover: #DDE1E9;
+  --color-accent-tint: rgba(199, 204, 214, 0.12);
+  --color-accent-fg: #101114;
+
+  --color-gold: #E4AE39;             /* contraband / knife-glove legendary reserve */
+  --color-gold-hover: #F1C155;
+  --color-gold-tint: rgba(228, 174, 57, 0.14);
+  --color-gold-glow: rgba(228, 174, 57, 0.40);
+
+  --color-bronze: #E4AE39;           /* alias → gold, for legacy consumers */
+  --color-bronze-hover: #F1C155;
+  --color-bronze-tint: rgba(228, 174, 57, 0.14);
+
+  --color-teal: #39D98A;             /* profit / positive delta / in stock */
+  --color-teal-hover: #57E6A0;
+  --color-teal-tint: rgba(57, 217, 138, 0.14);
+
+  --color-coral: #FF7A1A;            /* deals → signal amber */
+  --color-coral-hover: #FF9036;
+  --color-coral-tint: rgba(255, 122, 26, 0.14);
+
+  --color-violet: #FF7A1A;           /* alias → signal amber */
+  --color-violet-hover: #FF9036;
+  --color-violet-tint: rgba(255, 122, 26, 0.14);
+
+  --color-secondary: #23262E;
+  --color-price: var(--color-text);
+  --color-cta: var(--color-primary);
+  --color-cta-hover: var(--color-primary-hover);
+  --color-header: #101114;
+  --color-header-secondary: #15161A;
+
+  --color-accent-light: var(--color-accent-tint);
+  --color-accent-2: var(--color-primary);
+  --color-accent-2-hover: var(--color-primary-hover);
+  --color-accent-3: var(--color-teal);
+  --color-accent-4: #8B909C;
+
+  /* ── Surfaces (graphite & light) — machined panels over gunmetal ────── */
+  --color-bg: #15161A;               /* gunmetal graphite page canvas */
+  --color-bg-elevated: #23262E;      /* cards, dialogs — machined panel */
+  --color-bg-secondary: #1D1F25;     /* elevated section panel */
+  --color-bg-tertiary: #101114;      /* inset / well, table row hover */
+  --color-bg-warm: #1D1F25;
+  --color-bg-cool: #23262E;
+
+  /* ── Ink ────────────────────────────────────────────────────────────── */
+  --color-text: #ECEEF2;             /* warm off-white */
+  --color-text-secondary: #8B909C;   /* muted steel */
+  --color-text-tertiary: #5A5F6B;    /* faint */
+  --color-text-inverse: #15161A;
+
+  /* ── Lines — hairlines & machined-panel edges ───────────────────────── */
+  --color-border: #2E313A;
+  --color-border-hover: #3A3E48;
+  --color-border-strong: #474C57;
+  --color-hairline: rgba(255, 255, 255, 0.05);
+
+  /* ── Status ─────────────────────────────────────────────────────────── */
+  --color-success: #39D98A;          /* verified / profit */
+  --color-success-light: rgba(57, 217, 138, 0.14);
+  --color-warning: #F5B740;          /* trade-lock warning */
+  --color-warning-light: rgba(245, 183, 64, 0.14);
+  --color-danger: #F0554A;           /* loss / price-up / errors */
+  --color-danger-light: rgba(240, 85, 74, 0.12);
+  --color-info: #FF7A1A;
+
+  /* ── CS2 rarity palette (first-class, standard) ─────────────────────── */
+  --rarity-consumer: #b0c3d9;
+  --rarity-industrial: #5e98d9;
+  --rarity-milspec: #4b69ff;
+  --rarity-restricted: #8847ff;
+  --rarity-classified: #d32ce6;
+  --rarity-covert: #eb4b4b;
+  --rarity-gold: #ffd700;            /* knives / gloves (Extraordinary) */
+  --rarity-contraband: #e4ae39;
+
+  /* ── Wear / float gradient (FN → BS) — instrument gauge ─────────────── */
+  --wear-fn: #4ade80;
+  --wear-mw: #a3e635;
+  --wear-ft: #facc15;
+  --wear-ww: #fb923c;
+  --wear-bs: #ef4444;
+  --gradient-wear: linear-gradient(90deg, #4ade80 0%, #a3e635 20%, #facc15 45%, #fb923c 72%, #ef4444 100%);
+
+  /* ── Metal / glass — brushed steel edges over graphite ──────────────── */
+  --stroke-metal: linear-gradient(135deg, rgba(199,204,214,0.55) 0%, rgba(199,204,214,0.08) 42%, rgba(199,204,214,0.04) 60%, rgba(199,204,214,0.38) 100%);
+  --stroke-gold: linear-gradient(135deg, rgba(228,174,57,0.65) 0%, rgba(228,174,57,0.12) 45%, rgba(228,174,57,0.55) 100%);
+  --stroke-amber: linear-gradient(135deg, rgba(255,122,26,0.70) 0%, rgba(255,122,26,0.14) 45%, rgba(255,122,26,0.58) 100%);
+  --glass-bg: rgba(29, 31, 37, 0.62);
+  --glass-bg-strong: rgba(16, 17, 20, 0.84);
+  --glass-border: rgba(199, 204, 214, 0.10);
+  --glass-blur: 18px;
+
+  /* ── Elevation — layered shadows + amber glow ───────────────────────── */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.55);
+  --shadow-md: 0 6px 22px rgba(0, 0, 0, 0.55);
+  --shadow-lg: 0 16px 44px rgba(0, 0, 0, 0.60);
+  --shadow-xl: 0 30px 76px rgba(0, 0, 0, 0.66);
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.55);
+  --shadow-card-hover: 0 20px 48px rgba(255, 122, 26, 0.18);
+  --shadow-accent: 0 12px 32px rgba(199, 204, 214, 0.12);
+  --shadow-warm: 0 12px 32px rgba(255, 122, 26, 0.24);
+  --shadow-glow-amber: 0 0 32px rgba(255, 122, 26, 0.42);
+  --shadow-glow-azure: 0 0 32px rgba(255, 122, 26, 0.42);
+  --shadow-glow-violet: 0 0 34px rgba(255, 122, 26, 0.40);
+  --shadow-glow-gold: 0 0 34px rgba(228, 174, 57, 0.42);
+
+  /* ── Gradients ──────────────────────────────────────────────────────── */
+  --gradient-primary: linear-gradient(135deg, #FF7A1A 0%, #FFB068 100%);
+  --gradient-accent: linear-gradient(135deg, #C7CCD6 0%, #FF7A1A 100%);
+  --gradient-gold: linear-gradient(135deg, #F1C155 0%, #E4AE39 50%, #B8862A 100%);
+  --gradient-metal: linear-gradient(135deg, #E6E9EF 0%, #C7CCD6 45%, #8A909C 100%);
+  --gradient-warm: linear-gradient(180deg, #23262E 0%, #15161A 100%);
+  --gradient-cool: linear-gradient(180deg, #1D1F25 0%, #15161A 100%);
+  --gradient-hero: radial-gradient(1200px 600px at 20% -10%, rgba(255, 122, 26, 0.18) 0%, transparent 60%), radial-gradient(900px 520px at 88% 0%, rgba(199, 204, 214, 0.07) 0%, transparent 55%), radial-gradient(700px 500px at 60% 110%, rgba(228, 174, 57, 0.06) 0%, transparent 60%), linear-gradient(180deg, #15161A 0%, #101114 100%);
+  --gradient-badge: linear-gradient(135deg, #FF7A1A 0%, #E4AE39 100%);
+  --gradient-mint: linear-gradient(135deg, rgba(57, 217, 138, 0.14) 0%, rgba(255, 122, 26, 0.08) 100%);
+  --gradient-sunset: linear-gradient(135deg, rgba(228, 174, 57, 0.14) 0%, rgba(255, 122, 26, 0.12) 100%);
+  --gradient-electric: linear-gradient(135deg, #FF7A1A 0%, #C7CCD6 100%);
+  --gradient-card-hover: linear-gradient(180deg, rgba(255, 122, 26, 0.08) 0%, rgba(199, 204, 214, 0.04) 100%);
+
+  /* ── Radii — machined 8–14px look ───────────────────────────────────── */
+  --radius-sm: 0.5rem;               /* 8 */
+  --radius-md: 0.625rem;             /* 10 */
+  --radius-lg: 0.75rem;              /* 12 */
+  --radius-xl: 0.875rem;             /* 14 */
+  --radius-2xl: 1rem;                /* 16 */
+  --radius-pill: 9999px;
+
+  /* ── Layout ─────────────────────────────────────────────────────────── */
+  --max-width: 1360px;
+  --header-height: 76px;
+  --announcement-height: 36px;
+
+  /* ── Type — technical grotesk display + terminal mono ───────────────── */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: var(--font-space-grotesk), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-space-grotesk), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, "SFMono-Regular", monospace;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ── Promo tints ────────────────────────────────────────────────────── */
+  --promo-bg-blue: rgba(255, 122, 26, 0.12);
+  --promo-bg-warm: rgba(228, 174, 57, 0.10);
+  --promo-bg-green: rgba(57, 217, 138, 0.10);
+  --promo-bg-purple: rgba(255, 122, 26, 0.12);
+  --promo-bg-pink: rgba(199, 204, 214, 0.08);
+
+  color-scheme: dark;
+}
+
+/* ── DAYLIGHT (light) — first-class opt-in via .light or [data-theme="light"] ── */
+[data-theme="light"],
+.light {
+  /* "Daylight" — the same Armory Terminal identity on a warm paper-steel
+     surface. Amber deepens to burnt-amber so it stays legible on off-white. */
+  --color-primary: #E85D04;          /* burnt amber — reads on paper */
+  --color-primary-hover: #CF5104;
+  --color-primary-tint: rgba(232, 93, 4, 0.10);
+  --color-primary-glow: rgba(232, 93, 4, 0.22);
+  --color-primary-fg: #FFFFFF;
+
+  --color-accent: #5A6270;           /* graphite steel — metal, highlights */
+  --color-accent-hover: #454C58;
+  --color-accent-tint: rgba(90, 98, 112, 0.10);
+  --color-accent-fg: #FFFFFF;
+
+  --color-gold: #B8862A;             /* gold reads darker on light */
+  --color-gold-hover: #9C711F;
+  --color-gold-tint: rgba(184, 134, 42, 0.12);
+  --color-gold-glow: rgba(184, 134, 42, 0.24);
+
+  --color-bronze: #B8862A;
+  --color-bronze-hover: #9C711F;
+  --color-bronze-tint: rgba(184, 134, 42, 0.12);
+
+  --color-teal: #12A366;
+  --color-teal-hover: #0E8654;
+  --color-teal-tint: rgba(18, 163, 102, 0.12);
+
+  --color-coral: #E85D04;
+  --color-coral-hover: #CF5104;
+  --color-coral-tint: rgba(232, 93, 4, 0.10);
+
+  --color-violet: #E85D04;
+  --color-violet-hover: #CF5104;
+  --color-violet-tint: rgba(232, 93, 4, 0.10);
+
+  --color-secondary: #FFFFFF;
+  --color-price: var(--color-text);
+  --color-cta: var(--color-primary);
+  --color-cta-hover: var(--color-primary-hover);
+  --color-header: #FBFAF7;
+  --color-header-secondary: #F1EFE9;
+
+  --color-accent-light: var(--color-accent-tint);
+  --color-accent-2: var(--color-primary);
+  --color-accent-2-hover: var(--color-primary-hover);
+  --color-accent-3: var(--color-teal);
+  --color-accent-4: #4B5563;
+
+  --color-bg: #EFEEE9;               /* warm paper-steel canvas */
+  --color-bg-elevated: #FFFFFF;      /* cards, dialogs — clean panel */
+  --color-bg-secondary: #FBFAF7;
+  --color-bg-tertiary: #E7E5DE;      /* inset / well */
+  --color-bg-warm: #EFEEE9;
+  --color-bg-cool: #FFFFFF;
+
+  --color-text: #1A1B1E;             /* warm near-black ink */
+  --color-text-secondary: #565A62;   /* muted */
+  --color-text-tertiary: #8A8F98;
+  --color-text-inverse: #FFFFFF;
+
+  --color-border: #DCDAD1;           /* warm hairline */
+  --color-border-hover: #C6C3B8;
+  --color-border-strong: #A9A69A;
+  --color-hairline: rgba(26, 27, 30, 0.07);
+
+  --color-success: #12A366;
+  --color-success-light: rgba(18, 163, 102, 0.12);
+  --color-warning: #C68A16;
+  --color-warning-light: rgba(198, 138, 22, 0.12);
+  --color-danger: #DC3A2E;
+  --color-danger-light: rgba(220, 58, 46, 0.10);
+  --color-info: #E85D04;
+
+  --stroke-metal: linear-gradient(135deg, rgba(90,98,112,0.30) 0%, rgba(90,98,112,0.06) 45%, rgba(90,98,112,0.24) 100%);
+  --stroke-gold: linear-gradient(135deg, rgba(184,134,42,0.45) 0%, rgba(184,134,42,0.08) 45%, rgba(184,134,42,0.40) 100%);
+  --stroke-amber: linear-gradient(135deg, rgba(232,93,4,0.42) 0%, rgba(232,93,4,0.08) 45%, rgba(232,93,4,0.40) 100%);
+  --glass-bg: rgba(255, 255, 255, 0.72);
+  --glass-bg-strong: rgba(255, 255, 255, 0.90);
+  --glass-border: rgba(26, 27, 30, 0.08);
+  --glass-blur: 16px;
+
+  --shadow-sm: 0 1px 2px rgba(26, 27, 30, 0.05);
+  --shadow-md: 0 4px 14px rgba(26, 27, 30, 0.07);
+  --shadow-lg: 0 12px 32px rgba(26, 27, 30, 0.10);
+  --shadow-xl: 0 24px 60px rgba(26, 27, 30, 0.12);
+  --shadow-card: 0 1px 2px rgba(26, 27, 30, 0.05);
+  --shadow-card-hover: 0 16px 38px rgba(232, 93, 4, 0.16);
+  --shadow-accent: 0 10px 24px rgba(90, 98, 112, 0.14);
+  --shadow-warm: 0 10px 24px rgba(232, 93, 4, 0.16);
+  --shadow-glow-amber: 0 0 24px rgba(232, 93, 4, 0.24);
+  --shadow-glow-azure: 0 0 24px rgba(232, 93, 4, 0.22);
+  --shadow-glow-violet: 0 0 24px rgba(232, 93, 4, 0.22);
+  --shadow-glow-gold: 0 0 24px rgba(184, 134, 42, 0.26);
+
+  --gradient-primary: linear-gradient(135deg, #E85D04 0%, #F59A4B 100%);
+  --gradient-accent: linear-gradient(135deg, #5A6270 0%, #E85D04 100%);
+  --gradient-gold: linear-gradient(135deg, #E4AE39 0%, #B8862A 50%, #9C711F 100%);
+  --gradient-metal: linear-gradient(135deg, #FFFFFF 0%, #D5DAE2 45%, #AAB3C2 100%);
+  --gradient-electric: linear-gradient(135deg, #E85D04 0%, #5A6270 100%);
+  --gradient-hero: radial-gradient(1000px 500px at 18% -10%, rgba(232, 93, 4, 0.10) 0%, transparent 60%), radial-gradient(800px 440px at 92% 0%, rgba(90, 98, 112, 0.06) 0%, transparent 55%), linear-gradient(180deg, #FBFAF7 0%, #EFEEE9 100%);
+
+  color-scheme: light;
+}

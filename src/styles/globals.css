@@ -1,0 +1,567 @@
+@import "tailwindcss";
+@import "./variables.css";
+@import "./animations.css";
+
+/*
+ * Tailwind v4 — CSS-first config.
+ * Exposes the warm-premium design tokens defined in variables.css as Tailwind
+ * theme variables so utilities like `bg-primary`, `text-ink`, `border-line`,
+ * `font-display`, `font-mono` all just work from a single source of truth.
+ */
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: var(--font-space-grotesk), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-space-grotesk), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+
+  /* Semantic colors — canvas & surfaces (gunmetal graphite defaults) */
+  --color-bone: #15161A;
+  --color-paper: #23262E;
+  --color-cream: #1D1F25;
+  --color-surface: #23262E;
+
+  /* Ink / text — warm off-white */
+  --color-ink: #ECEEF2;
+  --color-ink-2: #8B909C;
+  --color-ink-3: #5A5F6B;
+
+  /* Primary — molten amber signal */
+  --color-primary: #FF7A1A;
+  --color-primary-hover: #FF9036;
+  --color-primary-tint: rgba(255, 122, 26, 0.14);
+  --color-primary-glow: rgba(255, 122, 26, 0.42);
+  --color-primary-fg: #140A03;
+
+  /* Accent — brushed steel */
+  --color-accent: #C7CCD6;
+  --color-accent-hover: #DDE1E9;
+  --color-accent-tint: rgba(199, 204, 214, 0.12);
+  --color-accent-fg: #101114;
+
+  /* Gold — contraband / knife-glove reserve */
+  --color-gold: #E4AE39;
+  --color-gold-hover: #F1C155;
+  --color-gold-tint: rgba(228, 174, 57, 0.14);
+
+  /* Bronze slot — aliased to gold */
+  --color-bronze: #E4AE39;
+  --color-bronze-hover: #F1C155;
+  --color-bronze-tint: rgba(228, 174, 57, 0.14);
+
+  /* Profit — success, positive delta */
+  --color-teal: #39D98A;
+  --color-teal-hover: #57E6A0;
+  --color-teal-tint: rgba(57, 217, 138, 0.14);
+
+  /* Deal accent — signal amber */
+  --color-coral: #FF7A1A;
+  --color-coral-hover: #FF9036;
+  --color-coral-tint: rgba(255, 122, 26, 0.14);
+
+  /* Violet alias → signal amber */
+  --color-violet: #FF7A1A;
+  --color-violet-hover: #FF9036;
+  --color-violet-tint: rgba(255, 122, 26, 0.14);
+
+  /* Lines */
+  --color-line: #2E313A;
+  --color-line-strong: #474C57;
+
+  /* Status */
+  --color-success: #39D98A;
+  --color-success-tint: rgba(57, 217, 138, 0.14);
+  --color-warning: #F5B740;
+  --color-warning-tint: rgba(245, 183, 64, 0.14);
+  --color-danger: #F0554A;
+  --color-danger-tint: rgba(240, 85, 74, 0.12);
+
+  /* CS2 rarity palette */
+  --color-rarity-consumer: #b0c3d9;
+  --color-rarity-industrial: #5e98d9;
+  --color-rarity-milspec: #4b69ff;
+  --color-rarity-restricted: #8847ff;
+  --color-rarity-classified: #d32ce6;
+  --color-rarity-covert: #eb4b4b;
+  --color-rarity-gold: #ffd700;
+  --color-rarity-contraband: #e4ae39;
+
+  /* Rounded corners — machined 8–14px */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.625rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 0.875rem;
+  --radius-2xl: 1rem;
+
+  /* Container */
+  --container-content: 1360px;
+
+  /* Type scale — geometric display */
+  --text-eyebrow: 0.6875rem;         /* 11 */
+  --text-eyebrow--line-height: 1.2;
+  --text-eyebrow--letter-spacing: 0.20em;
+
+  --text-display: 3rem;              /* 48 */
+  --text-display--line-height: 1.02;
+  --text-display--letter-spacing: -0.02em;
+
+  --text-editorial: 2.25rem;         /* 36 */
+  --text-editorial--line-height: 1.1;
+  --text-editorial--letter-spacing: -0.015em;
+}
+
+/* Light-mode variant activator — opt-in via .light or [data-theme="light"]. */
+@custom-variant light (&:where(.light, .light *, [data-theme="light"], [data-theme="light"] *));
+
+/* Legacy `dark:*` support — since warm-dark is now the default, dark: utilities
+   should match the root. We keep the variant registered so old classnames still
+   compile. */
+@custom-variant dark (&:where(:root, :root *, .dark, .dark *, [data-theme="dark"], [data-theme="dark"] *));
+
+/* ── Base layer ──────────────────────────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+  /* The sticky header shrinks its utility strip on scroll. Browser scroll
+     anchoring would compensate for that height change by nudging scrollY,
+     which fights the scroll threshold and makes the header jitter. Disable it. */
+  overflow-anchor: none;
+}
+
+html[data-theme="light"],
+html.light {
+  color-scheme: light;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "ss01", "cv11";
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+::selection {
+  background-color: var(--color-primary);
+  color: var(--color-primary-fg);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-border-strong);
+}
+
+/* Hide native scrollbar on horizontally-scrolling strips. */
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+/* ── Legacy helpers kept for compatibility ───────────────────────────── */
+
+.section-padding {
+  padding: 4rem 1rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding: 5rem 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-padding {
+    padding: 6rem 2rem;
+  }
+}
+
+.section-container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  line-height: 1.05;
+}
+
+@media (min-width: 768px) {
+  .section-title {
+    font-size: 2.75rem;
+  }
+}
+
+.section-subtitle {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  margin-top: 0.75rem;
+  max-width: 560px;
+  line-height: 1.6;
+}
+
+.gradient-text {
+  background: var(--gradient-electric);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ── Warm-premium surface helpers ────────────────────────────────────── */
+
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur)) saturate(150%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(150%);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-strong {
+  background: var(--glass-bg-strong);
+  backdrop-filter: blur(var(--glass-blur)) saturate(150%);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(150%);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-border {
+  border: 1px solid var(--glass-border);
+}
+
+/* Metallic hairline edge — a brushed-silver 1px frame via gradient border. */
+.metal-stroke {
+  position: relative;
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--color-bg-elevated), var(--color-bg-elevated)) padding-box,
+    var(--stroke-metal) border-box;
+}
+.gold-stroke {
+  position: relative;
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--color-bg-elevated), var(--color-bg-elevated)) padding-box,
+    var(--stroke-gold) border-box;
+}
+.amber-stroke {
+  position: relative;
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--color-bg-elevated), var(--color-bg-elevated)) padding-box,
+    var(--stroke-amber) border-box;
+}
+
+.hairline {
+  border-color: var(--color-border);
+}
+
+/* ── Armory Terminal signature motifs ────────────────────────────────── */
+
+/* Machined panel — hairline frame + a faint top-edge highlight so the surface
+   reads like a precisely-cut metal plate rather than a flat card. */
+.panel {
+  position: relative;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+.panel::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.10) 20%, rgba(255, 255, 255, 0.10) 80%, transparent);
+  pointer-events: none;
+}
+[data-theme="light"] .panel::before,
+.light .panel::before {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.9) 20%, rgba(255, 255, 255, 0.9) 80%, transparent);
+}
+
+/* Targeting-reticle corners — subtle bracket accents on hover/focus for a
+   controlled nod to the game. Add `.reticle` to a positioned element. */
+.reticle::before,
+.reticle::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 1.5px solid var(--color-primary);
+  opacity: 0;
+  transition: opacity 180ms var(--ease-out-expo);
+  pointer-events: none;
+}
+.reticle::before {
+  top: 7px;
+  left: 7px;
+  border-right: 0;
+  border-bottom: 0;
+}
+.reticle::after {
+  bottom: 7px;
+  right: 7px;
+  border-left: 0;
+  border-top: 0;
+}
+.reticle:hover::before,
+.reticle:hover::after,
+.reticle:focus-within::before,
+.reticle:focus-within::after {
+  opacity: 0.9;
+}
+
+/* HUD readout — aligned mono instrument text for float/price/pattern rows. */
+.readout {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+/* Micro-label — wide-tracked uppercase mono eyebrow for data labels. */
+.microlabel {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}
+
+/* Inset well — dark machined recess for inputs/search with amber focus ring. */
+.well {
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.35);
+  transition: border-color 160ms var(--ease-out-expo), box-shadow 160ms var(--ease-out-expo);
+}
+.well:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.35), 0 0 0 3px var(--color-primary-tint);
+}
+
+/* Amber focus-visible ring — accessible keyboard focus across interactives. */
+.focus-amber:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-bg), 0 0 0 4px var(--color-primary);
+}
+
+.glow-amber {
+  box-shadow: var(--shadow-glow-amber);
+}
+.glow-azure {
+  box-shadow: var(--shadow-glow-azure);
+}
+.glow-violet {
+  box-shadow: var(--shadow-glow-violet);
+}
+.glow-gold {
+  box-shadow: var(--shadow-glow-gold);
+}
+
+/* Fine film grain — a barely-there noise film to kill banding on obsidian. */
+.grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.35;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Dot-grid — subtle texture behind hero/bento surfaces. */
+.warm-dots,
+.retail-dots {
+  background-image: radial-gradient(rgba(255, 122, 26, 0.10) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+[data-theme="light"] .warm-dots,
+[data-theme="light"] .retail-dots,
+.light .warm-dots,
+.light .retail-dots {
+  background-image: radial-gradient(rgba(232, 93, 4, 0.08) 1px, transparent 1px);
+}
+
+/* Hairline grid — deep behind hero and data surfaces. */
+.tech-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 34px 34px;
+}
+[data-theme="light"] .tech-grid,
+.light .tech-grid {
+  background-image:
+    linear-gradient(rgba(14, 16, 21, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(14, 16, 21, 0.045) 1px, transparent 1px);
+}
+
+/* ── Editorial helpers used across the site ──────────────────────────── */
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.editorial-heading {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  font-optical-sizing: auto;
+}
+
+/* Monospaced spec/price/float treatment — tabular numerals. */
+.spec-value {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+/* ── Gaming-premium utilities ─────────────────────────────────────────── */
+
+/* Tabular numerals anywhere prices/floats render. */
+.tnum {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+/* Rarity strip/border helpers — set --rarity to a token per item. */
+.rarity-strip {
+  background: var(--rarity, var(--color-rarity-consumer));
+  box-shadow: 0 0 12px 0 color-mix(in srgb, var(--rarity, #b0c3d9) 55%, transparent);
+}
+.rarity-glow {
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--rarity, #b0c3d9) 40%, transparent),
+    0 14px 40px -12px color-mix(in srgb, var(--rarity, #b0c3d9) 45%, transparent);
+}
+
+/* Wear/float gradient bar. */
+.wear-bar {
+  background: var(--gradient-wear);
+}
+
+/* Interactive float slider — gradient track + prominent thumb. */
+.wear-slider {
+  background: var(--gradient-wear);
+}
+.wear-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 22px;
+  width: 22px;
+  border-radius: 9999px;
+  background: #fff;
+  border: 3px solid var(--color-primary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+}
+.wear-slider::-moz-range-thumb {
+  height: 22px;
+  width: 22px;
+  border-radius: 9999px;
+  background: #fff;
+  border: 3px solid var(--color-primary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+  cursor: pointer;
+}
+
+/* Bento grid — landing feature sections. */
+.bento {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+.bento > .col-2 { grid-column: span 2; }
+.bento > .row-2 { grid-row: span 2; }
+@media (max-width: 900px) {
+  .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  .bento { grid-template-columns: 1fr; }
+  .bento > .col-2 { grid-column: span 1; }
+}
+
+/* Card lift micro-interaction (GPU-friendly). */
+.card-lift {
+  transition: transform 200ms var(--ease-out-expo), box-shadow 200ms var(--ease-out-expo),
+    border-color 200ms var(--ease-out-expo);
+  will-change: transform;
+}
+.card-lift:hover {
+  transform: translate3d(0, -4px, 0);
+  box-shadow: var(--shadow-card-hover);
+}
+
+/* Skeleton shimmer loader. */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: var(--color-bg-tertiary);
+}
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
+  animation: skeleton-shimmer 1.4s infinite;
+}
+@keyframes skeleton-shimmer {
+  100% { transform: translateX(100%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .card-lift:hover { transform: none; }
+}
