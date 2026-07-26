@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 
 export interface SteamSummary {
   personaName: string | null;
@@ -33,7 +33,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const refresh = async () => {
+  const refresh = useCallback(async () => {
     try {
       const res = await fetch("/api/auth/me");
       const data = await res.json();
@@ -41,27 +41,24 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     } catch {
       setUser(null);
     }
-  };
+  }, []);
 
   useEffect(() => {
     refresh().finally(() => setLoading(false));
-  }, []);
+  }, [refresh]);
 
-  const signOut = async () => {
+  const signOut = useCallback(async () => {
     await fetch("/api/auth/logout", { method: "POST" });
     setUser(null);
-    // Preserve the shopper's locale on the sign-in redirect so Latvian users
-    // stay on the LV site instead of getting bounced to /en/.
-    const locale = window.location.pathname.split("/")[1] || "en";
-    const supported = ["en", "lv"].includes(locale) ? locale : "en";
-    window.location.href = `/${supported}/auth/login`;
-  };
+    window.location.href = "/auth/login";
+  }, []);
 
-  return (
-    <AuthContext.Provider value={{ user, role: user?.role || null, loading, signOut, refresh }}>
-      {children}
-    </AuthContext.Provider>
+  const value = useMemo(
+    () => ({ user, role: user?.role || null, loading, signOut, refresh }),
+    [user, loading, signOut, refresh]
   );
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
 export function useAuth() {

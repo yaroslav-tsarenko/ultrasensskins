@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Plus, Search, Trash2, X } from "lucide-react";
 import { useLoadout } from "@/lib/hooks/useLoadout";
-import { formatUSD } from "@/components/skins/SkinCard";
+import { useCurrency } from "@/providers/CurrencyProvider";
 import { toSnapshot, type SkinSnapshot } from "@/lib/skins/snapshot";
 import type { CatalogItem, CatalogResult } from "@/lib/skins/queries";
 import { CollectionHeader } from "./CollectionShell";
@@ -42,6 +42,7 @@ const SLOTS: { side: string; slots: Slot[] }[] = [
 export function LoadoutClient() {
   const { loadout, assign, unassign, clear, total, filled } = useLoadout();
   const [picking, setPicking] = useState<Slot | null>(null);
+  const { format } = useCurrency();
 
   return (
     <>
@@ -89,7 +90,7 @@ export function LoadoutClient() {
               Loadout value
             </div>
             <div className="tnum mt-1 font-display text-3xl font-bold text-[color:var(--color-text)]">
-              {formatUSD(total)}
+              {format(total, "USD")}
             </div>
             <div className="mt-1 text-sm text-[color:var(--color-text-secondary)]">
               {filled} of {SLOTS.reduce((n, g) => n + g.slots.length, 0)} slots filled
@@ -129,6 +130,7 @@ function SlotCard({
   onPick: () => void;
   onClear: () => void;
 }) {
+  const { format } = useCurrency();
   if (!snapshot) {
     return (
       <button
@@ -164,7 +166,7 @@ function SlotCard({
           {snapshot.name.split(" | ").slice(1).join(" | ") || snapshot.name}
         </span>
         <span className="tnum shrink-0 text-[11px] font-bold text-[color:var(--color-text)]">
-          {formatUSD(snapshot.price)}
+          {format(snapshot.price, "USD")}
         </span>
       </div>
     </div>
@@ -184,6 +186,7 @@ function SkinPicker({
   const [items, setItems] = useState<CatalogItem[]>([]);
   const [loading, setLoading] = useState(true);
   const abortRef = useRef<AbortController | null>(null);
+  const { format } = useCurrency();
 
   const fetchItems = useCallback(
     async (q: string) => {
@@ -264,7 +267,7 @@ function SkinPicker({
                   {it.name.split(" | ").slice(1).join(" | ") || it.name}
                 </span>
                 <span className="tnum shrink-0 text-[11px] font-bold text-[color:var(--color-text)]">
-                  {formatUSD(it.price)}
+                  {format(it.price, "USD")}
                 </span>
               </div>
             </button>

@@ -1,10 +1,5 @@
-import { defineRouting } from "next-intl/routing";
-import { createNavigation } from "next-intl/navigation";
-
-export const routing = defineRouting({
-  locales: ["en", "lv"],
-  defaultLocale: "en",
-});
-
-export const { Link, redirect, usePathname, useRouter, getPathname } =
-  createNavigation(routing);
+// Single-locale (English) site — no i18n routing, no locale URL prefix.
+// Re-exported here so existing `@/i18n/routing` imports keep working with
+// standard Next.js navigation.
+export { default as Link } from "next/link";
+export { useRouter, usePathname, redirect } from "next/navigation";

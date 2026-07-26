@@ -1,6 +1,7 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState, useCallback, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
+import { formatPrice } from "@/lib/utils/format-price";
 
 export type Currency = "USD" | "GBP" | "EUR";
 
@@ -13,7 +14,10 @@ interface Rates {
 interface CurrencyContextType {
   currency: Currency;
   setCurrency: (currency: Currency) => void;
-  convert: (amountInEur: number) => number;
+  /** Convert an amount from a base currency (default EUR) into the selected currency. */
+  convert: (amount: number, from?: Currency) => number;
+  /** Convert and format an amount from a base currency (default EUR). */
+  format: (amount: number, from?: Currency) => string;
   symbol: string;
   rates: Rates;
 }
@@ -25,7 +29,7 @@ const SYMBOLS: Record<Currency, string> = { GBP: "£", USD: "$", EUR: "€" };
 const CurrencyContext = createContext<CurrencyContextType | undefined>(undefined);
 
 export function CurrencyProvider({ children }: { children: ReactNode }) {
-  const [currency, setCurrencyState] = useState<Currency>("GBP");
+  const [currency, setCurrencyState] = useState<Currency>("USD");
   const [rates, setRates] = useState<Rates>(DEFAULT_RATES);
 
   useEffect(() => {
@@ -53,26 +57,26 @@ export function CurrencyProvider({ children }: { children: ReactNode }) {
     };
   }, []);
 
-  const setCurrency = (c: Currency) => {
-    setCurrencyState(c);
-    localStorage.setItem("currency", c);
-  };
+  const value = useMemo<CurrencyContextType>(() => {
+    const setCurrency = (c: Currency) => {
+      setCurrencyState(c);
+      localStorage.setItem("currency", c);
+    };
 
-  const convert = useCallback(
-    (amountInEur: number) => {
-      if (currency === "EUR") return amountInEur;
-      return Math.round(amountInEur * rates[currency] * 100) / 100;
-    },
-    [currency, rates]
-  );
+    // Rates are EUR-based: rates[X] is the EUR→X multiplier (rates.EUR === 1).
+    const convert = (amount: number, from: Currency = "EUR") => {
+      if (!Number.isFinite(amount)) return 0;
+      const converted = (amount * rates[currency]) / rates[from];
+      return Math.round(converted * 100) / 100;
+    };
 
-  return (
-    <CurrencyContext.Provider
-      value={{ currency, setCurrency, convert, rates, symbol: SYMBOLS[currency] }}
-    >
-      {children}
-    </CurrencyContext.Provider>
-  );
+    const format = (amount: number, from: Currency = "EUR") =>
+      formatPrice(convert(amount, from), currency);
+
+    return { currency, setCurrency, convert, format, rates, symbol: SYMBOLS[currency] };
+  }, [currency, rates]);
+
+  return <CurrencyContext.Provider value={value}>{children}</CurrencyContext.Provider>;
 }
 
 export function useCurrency() {

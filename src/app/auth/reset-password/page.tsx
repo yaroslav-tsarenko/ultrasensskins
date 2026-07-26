@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
@@ -9,7 +9,7 @@ import { Lock, Eye, EyeOff, ShoppingBag, CheckCircle } from "lucide-react";
 import { toast } from "sonner";
 import { motion } from "framer-motion";
 
-export default function ResetPasswordPage() {
+function ResetPasswordForm() {
   const t = useTranslations("auth");
   const searchParams = useSearchParams();
   const token = searchParams.get("token");
@@ -168,5 +168,13 @@ export default function ResetPasswordPage() {
         )}
       </motion.div>
     </div>
+  );
+}
+
+export default function ResetPasswordPage() {
+  return (
+    <Suspense>
+      <ResetPasswordForm />
+    </Suspense>
   );
 }

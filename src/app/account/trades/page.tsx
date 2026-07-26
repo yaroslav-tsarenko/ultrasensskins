@@ -2,6 +2,7 @@ import { Link } from "@/i18n/routing";
 import { getSessionUser } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { Repeat, ArrowRight } from "lucide-react";
+import { UsdPrice } from "@/components/skins/UsdPrice";
 
 const STATUS_STYLES: Record<string, string> = {
   pending: "bg-[color:var(--color-warning)]/15 text-[color:var(--color-warning)]",
@@ -99,7 +100,7 @@ export default async function TradesPage() {
                 </div>
                 <div className="flex shrink-0 items-center gap-3">
                   <span className="font-mono text-sm font-bold tabular-nums text-[color:var(--color-text)]">
-                    ${Number(p.price).toFixed(2)}
+                    <UsdPrice value={Number(p.price)} />
                   </span>
                   <span
                     className={`rounded-full px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.12em] ${

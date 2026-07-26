@@ -4,6 +4,7 @@ import { prisma } from "@/lib/prisma";
 import { getMarketStats, queryCatalog } from "@/lib/skins/queries";
 import { buildPriceHistory } from "@/lib/skins/pricing";
 import { PriceChart } from "@/components/skins/PriceChart";
+import { UsdPrice } from "@/components/skins/UsdPrice";
 import { SkinCard } from "@/components/skins/SkinCard";
 import { brand } from "@/lib/brand";
 import { Activity, TrendingUp, Layers, Percent, ArrowRight } from "lucide-react";
@@ -27,7 +28,7 @@ async function getFeaturedSkin() {
   });
 }
 
-function StatCard({ icon: Icon, label, value }: { icon: React.ElementType; label: string; value: string }) {
+function StatCard({ icon: Icon, label, value }: { icon: React.ElementType; label: string; value: React.ReactNode }) {
   return (
     <div className="rounded-2xl border border-[color:var(--color-border)] bg-[color:var(--color-bg-elevated)] p-5">
       <div className="flex items-center gap-2 text-[color:var(--color-accent)]">
@@ -43,12 +44,7 @@ function StatCard({ icon: Icon, label, value }: { icon: React.ElementType; label
   );
 }
 
-export default async function AnalyticsPage({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
+export default async function AnalyticsPage() {
   const [stats, featured, movers] = await Promise.all([
     getMarketStats(),
     getFeaturedSkin(),
@@ -78,7 +74,7 @@ export default async function AnalyticsPage({
         <StatCard icon={Layers} label="Items listed" value={stats.totalListings.toLocaleString()} />
         <StatCard icon={TrendingUp} label="Unique skins" value={stats.totalSkins.toLocaleString()} />
         <StatCard icon={Percent} label="Avg discount" value={`${stats.avgDiscountPct.toFixed(1)}%`} />
-        <StatCard icon={Activity} label="Market value" value={`$${Math.round(stats.marketValue).toLocaleString()}`} />
+        <StatCard icon={Activity} label="Market value" value={<UsdPrice value={stats.marketValue} />} />
       </div>
 
       {featured && (
@@ -117,7 +113,7 @@ export default async function AnalyticsPage({
         </div>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
           {movers.items.map((item) => (
-            <SkinCard key={item.listingId} item={item} locale={locale} />
+            <SkinCard key={item.listingId} item={item} />
           ))}
         </div>
       </section>

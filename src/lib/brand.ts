@@ -42,7 +42,7 @@ export const brand = {
     emailB2B: contactEmail,
     phone: env("NEXT_PUBLIC_CONTACT_PHONE", ""),
     phoneHref: `tel:${env("NEXT_PUBLIC_CONTACT_PHONE", "").replace(/\s+/g, "")}`,
-    contactPage: "/en/contact",
+    contactPage: "/contact",
   },
 
   social: {

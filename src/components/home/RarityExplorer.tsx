@@ -5,6 +5,7 @@ import { Link } from "@/i18n/routing";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import type { RarityBucket } from "@/lib/skins/queries";
+import { useCurrency } from "@/providers/CurrencyProvider";
 
 // Canonical rarity order + palette (mirrors the CS2 tokens in globals.css).
 const RARITY_META: { match: string; color: string }[] = [
@@ -32,6 +33,7 @@ function orderFor(rarity: string): number {
 export function RarityExplorer({ buckets }: { buckets: RarityBucket[] }) {
   const sorted = [...buckets].sort((a, b) => orderFor(a.rarity) - orderFor(b.rarity));
   const [active, setActive] = useState(0);
+  const { format } = useCurrency();
   if (!sorted.length) return null;
 
   const current = sorted[active];
@@ -108,7 +110,7 @@ export function RarityExplorer({ buckets }: { buckets: RarityBucket[] }) {
             </div>
             <div>
               <div className="spec-value text-3xl font-extrabold text-[color:var(--color-accent)]">
-                {current.fromPrice != null ? `$${current.fromPrice.toFixed(2)}` : "—"}
+                {current.fromPrice != null ? format(current.fromPrice, "USD") : "—"}
               </div>
               <div className="font-mono text-[10px] uppercase tracking-[0.14em] text-[color:var(--color-text-tertiary)]">
                 From

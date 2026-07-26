@@ -1,7 +1,17 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
 import "@/styles/globals.css";
 import { brand } from "@/lib/brand";
+import { ThemeProvider } from "@/providers/ThemeProvider";
+import { AuthProvider } from "@/providers/AuthProvider";
+import { CartProvider } from "@/providers/CartProvider";
+import { CurrencyProvider } from "@/providers/CurrencyProvider";
+import { ToastProvider } from "@/providers/ToastProvider";
+import { Header } from "@/components/layout/Header/Header";
+import { Footer } from "@/components/layout/Footer/Footer";
+import { CookieConsent } from "@/components/shared/CookieConsent/CookieConsent";
 
 // Single source of truth for typography — swap a face here and the whole site
 // follows via the --font-* design tokens in variables.css / globals.css.
@@ -48,11 +58,13 @@ export const metadata: Metadata = {
   icons: { icon: "/icon.svg", apple: "/icon.svg" },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const messages = await getMessages();
+
   return (
     <html
       lang="en"
@@ -60,7 +72,25 @@ export default function RootLayout({
       data-theme="dark"
       className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <NextIntlClientProvider messages={messages}>
+          <ThemeProvider>
+            <AuthProvider>
+              <CurrencyProvider>
+                <CartProvider>
+                  <div className="flex flex-col min-h-screen">
+                    <Header />
+                    <main className="flex-1">{children}</main>
+                    <Footer />
+                  </div>
+                  <ToastProvider />
+                  <CookieConsent />
+                </CartProvider>
+              </CurrencyProvider>
+            </AuthProvider>
+          </ThemeProvider>
+        </NextIntlClientProvider>
+      </body>
     </html>
   );
 }

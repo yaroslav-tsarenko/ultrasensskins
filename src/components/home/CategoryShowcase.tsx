@@ -1,7 +1,7 @@
 import { Link } from "@/i18n/routing";
 import { ArrowUpRight } from "lucide-react";
 import type { CategoryShowcaseItem } from "@/lib/skins/queries";
-import { formatUSD } from "@/lib/skins/shared";
+import { UsdPrice } from "@/components/skins/UsdPrice";
 
 // Visually-rich category grid — each card is a machined panel with a spotlit
 // representative render, live unique-skin count, and entry / average price
@@ -55,7 +55,7 @@ export function CategoryShowcase({ items }: { items: CategoryShowcaseItem[] }) {
               <div className="text-right">
                 <div className="microlabel">from</div>
                 <div className="readout text-sm font-bold text-[color:var(--color-primary)]">
-                  {formatUSD(c.fromPrice)}
+                  <UsdPrice value={c.fromPrice} />
                 </div>
               </div>
             )}

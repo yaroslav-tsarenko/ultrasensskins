@@ -7,6 +7,7 @@ import type { CatalogItem } from "@/lib/skins/queries";
 import { useFavorites } from "@/lib/hooks/useFavorites";
 import { useCompare } from "@/lib/hooks/useCompare";
 import { toSnapshot } from "@/lib/skins/snapshot";
+import { useCurrency } from "@/providers/CurrencyProvider";
 
 export { formatUSD };
 
@@ -16,12 +17,13 @@ function floatMarker(exterior: ExteriorCode, float: number | null): number | nul
   return Math.max(0, Math.min(1, float));
 }
 
-export function SkinCard({ item, locale = "en" }: { item: CatalogItem; locale?: string }) {
+export function SkinCard({ item }: { item: CatalogItem }) {
   const ext = exteriorMeta(item.exterior);
   const marker = floatMarker(item.exterior, item.float);
-  const href = `/${locale}/skin/${item.skinId}?listing=${item.listingId}`;
+  const href = `/skin/${item.skinId}?listing=${item.listingId}`;
   const favorites = useFavorites();
   const compare = useCompare();
+  const { format } = useCurrency();
   const isFav = favorites.has(item.skinId);
   const inCompare = compare.has(item.skinId);
 
@@ -159,11 +161,11 @@ export function SkinCard({ item, locale = "en" }: { item: CatalogItem; locale?: 
         <div className="mt-auto flex items-end justify-between gap-2 pt-1">
           <div className="flex flex-col">
             <span className="tnum text-base font-bold text-[color:var(--color-text)]">
-              {formatUSD(item.price)}
+              {format(item.price, "USD")}
             </span>
             {item.steamPrice != null && item.discountPct != null && item.discountPct > 0 && (
               <span className="tnum text-[11px] text-[color:var(--color-text-tertiary)] line-through">
-                {formatUSD(item.steamPrice)}
+                {format(item.steamPrice, "USD")}
               </span>
             )}
           </div>

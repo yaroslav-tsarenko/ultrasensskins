@@ -15,12 +15,7 @@ const STEPS = [
   { icon: Wallet, title: "Get paid on sale", text: "Funds land in your UltraSensSkin balance the moment a buyer completes the trade." },
 ];
 
-export default async function SellPage({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  await params;
+export default async function SellPage() {
   const user = await getSessionUser();
 
   return (

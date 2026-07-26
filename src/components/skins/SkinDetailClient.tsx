@@ -12,7 +12,8 @@ import type { SkinPageData, SkinListingView } from "@/lib/skins/queries";
 import type { MarketQuote, PricePoint } from "@/lib/skins/pricing";
 import { PriceChart } from "./PriceChart";
 import { TradeSetupModal, type PurchaseState } from "./TradeSetupModal";
-import { SkinCard, SkinCardSkeleton, formatUSD } from "./SkinCard";
+import { SkinCard, SkinCardSkeleton } from "./SkinCard";
+import { useCurrency } from "@/providers/CurrencyProvider";
 import type { CatalogItem, CatalogResult } from "@/lib/skins/queries";
 
 function FloatBar({ float, exterior }: { float: number | null; exterior: ExteriorCode }) {
@@ -49,7 +50,6 @@ export function SkinDetailClient({
   skin,
   history,
   markets,
-  locale,
   locked,
   initialListingId,
   purchaseState,
@@ -57,7 +57,6 @@ export function SkinDetailClient({
   skin: SkinPageData;
   history: PricePoint[];
   markets: MarketQuote[];
-  locale: string;
   locked: boolean;
   initialListingId?: string;
   purchaseState: PurchaseState;
@@ -71,6 +70,7 @@ export function SkinDetailClient({
   const favorites = useFavorites();
   const compare = useCompare();
   const recent = useRecentlyViewed();
+  const { format } = useCurrency();
   const isFav = favorites.has(skin.id);
   const inCompare = compare.has(skin.id);
   const selected = useMemo(
@@ -113,9 +113,9 @@ export function SkinDetailClient({
   return (
     <div className="mx-auto w-full max-w-[var(--max-width)] px-4 py-6">
       <nav className="mb-4 flex items-center gap-1.5 text-xs text-[color:var(--color-text-tertiary)]">
-        <Link href={`/${locale}`} className="hover:text-[color:var(--color-text)]">Home</Link>
+        <Link href="/" className="hover:text-[color:var(--color-text)]">Home</Link>
         <span>/</span>
-        <Link href={`/${locale}/catalog`} className="hover:text-[color:var(--color-text)]">Catalog</Link>
+        <Link href="/catalog" className="hover:text-[color:var(--color-text)]">Catalog</Link>
         <span>/</span>
         <span className="text-[color:var(--color-text-secondary)]">{skin.weapon}</span>
       </nav>
@@ -203,12 +203,12 @@ export function SkinDetailClient({
             <div className="flex items-end justify-between gap-3">
               <div>
                 <div className="tnum font-display text-3xl font-bold text-[color:var(--color-text)]">
-                  {selected ? formatUSD(selected.price) : "—"}
+                  {selected ? format(selected.price, "USD") : "—"}
                 </div>
                 {selected?.steamPrice != null && selected.discountPct != null && selected.discountPct > 0 && (
                   <div className="mt-0.5 flex items-center gap-2">
                     <span className="tnum text-sm text-[color:var(--color-text-tertiary)] line-through">
-                      {formatUSD(selected.steamPrice)}
+                      {format(selected.steamPrice, "USD")}
                     </span>
                     <span className="rounded bg-[color:var(--color-success)] px-1.5 py-0.5 text-[11px] font-bold text-black tnum">
                       −{Math.round(selected.discountPct)}%
@@ -299,7 +299,7 @@ export function SkinDetailClient({
                           </span>
                         )}
                       </span>
-                      <span className="tnum font-semibold text-[color:var(--color-text)]">{formatUSD(m.price)}</span>
+                      <span className="tnum font-semibold text-[color:var(--color-text)]">{format(m.price, "USD")}</span>
                     </div>
                   );
                 })}
@@ -321,7 +321,7 @@ export function SkinDetailClient({
                 Sign in to view price history, float breakdown and cross-market prices.
               </p>
               <Link
-                href={`/${locale}/auth`}
+                href="/auth"
                 className="mt-4 inline-flex items-center gap-1.5 rounded-lg bg-[color:var(--color-primary)] px-5 py-2.5 text-sm font-bold text-[color:var(--color-primary-fg)] shadow-[var(--shadow-glow-violet)]"
               >
                 <Sparkles className="h-4 w-4" /> Sign in free
@@ -331,26 +331,24 @@ export function SkinDetailClient({
         )}
       </div>
 
-      <SimilarItems weapon={skin.weapon} excludeId={skin.id} locale={locale} />
+      <SimilarItems weapon={skin.weapon} excludeId={skin.id} />
 
       {selected && (
         <TradeSetupModal
           open={buyOpen}
           onClose={() => setBuyOpen(false)}
           initialState={purchaseState}
-          locale={locale}
           skinName={displayName}
-          price={formatUSD(selected.price)}
           priceValue={selected.price}
           listingId={selected.id}
-          next={`/${locale}/skin/${skin.id}?listing=${selected.id}`}
+          next={`/skin/${skin.id}?listing=${selected.id}`}
         />
       )}
     </div>
   );
 }
 
-function SimilarItems({ weapon, excludeId, locale }: { weapon: string; excludeId: string; locale: string }) {
+function SimilarItems({ weapon, excludeId }: { weapon: string; excludeId: string }) {
   const [items, setItems] = useState<CatalogItem[] | null>(null);
 
   useEffect(() => {
@@ -374,7 +372,7 @@ function SimilarItems({ weapon, excludeId, locale }: { weapon: string; excludeId
       </h2>
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
         {items
-          ? items.map((it) => <SkinCard key={it.listingId} item={it} locale={locale} />)
+          ? items.map((it) => <SkinCard key={it.listingId} item={it} />)
           : Array.from({ length: 6 }).map((_, i) => <SkinCardSkeleton key={i} />)}
       </div>
     </section>
@@ -404,6 +402,7 @@ function OfferRow({
   onSelect: () => void;
 }) {
   const ext = exteriorMeta(listing.exterior);
+  const { format } = useCurrency();
   return (
     <button
       onClick={onSelect}
@@ -428,7 +427,7 @@ function OfferRow({
         {best && (
           <span className="rounded bg-[color:var(--color-success)] px-1.5 py-0.5 text-[10px] font-bold text-black">BEST</span>
         )}
-        <span className="tnum text-sm font-bold text-[color:var(--color-text)]">{formatUSD(listing.price)}</span>
+        <span className="tnum text-sm font-bold text-[color:var(--color-text)]">{format(listing.price, "USD")}</span>
       </div>
     </button>
   );

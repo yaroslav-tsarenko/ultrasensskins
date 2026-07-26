@@ -38,11 +38,11 @@ export function CollectionHeader({
   );
 }
 
-export function SnapshotGrid({ items, locale }: { items: SkinSnapshot[]; locale: string }) {
+export function SnapshotGrid({ items }: { items: SkinSnapshot[] }) {
   return (
     <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
       {items.map((s) => (
-        <SkinCard key={s.skinId} item={snapshotToItem(s)} locale={locale} />
+        <SkinCard key={s.skinId} item={snapshotToItem(s)} />
       ))}
     </div>
   );

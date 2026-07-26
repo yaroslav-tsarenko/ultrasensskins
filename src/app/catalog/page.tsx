@@ -9,12 +9,7 @@ export const metadata: Metadata = {
   description: "Browse thousands of CS2 skins with live float, pattern and price data.",
 };
 
-export default async function CatalogPage({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  const { locale } = await params;
+export default async function CatalogPage() {
   const facets = await getCatalogFacets();
 
   return (
@@ -37,7 +32,7 @@ export default async function CatalogPage({
         </div>
       </header>
       <Suspense fallback={null}>
-        <CatalogClient facets={facets} locale={locale} />
+        <CatalogClient facets={facets} />
       </Suspense>
     </>
   );

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useParams, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Heart, History, Trash2 } from "lucide-react";
 import { useFavorites } from "@/lib/hooks/useFavorites";
@@ -11,8 +11,6 @@ import { CollectionHeader, EmptyState, SnapshotGrid } from "./CollectionShell";
 type Tab = "favorites" | "recent";
 
 export function FavoritesClient() {
-  const params = useParams();
-  const locale = (params?.locale as string) ?? "en";
   const search = useSearchParams();
   const [tab, setTab] = useState<Tab>(search.get("tab") === "recent" ? "recent" : "favorites");
 
@@ -54,7 +52,7 @@ export function FavoritesClient() {
             }
             cta={
               <Link
-                href={`/${locale}/catalog`}
+                href="/catalog"
                 className="inline-flex items-center rounded-lg bg-[color:var(--color-primary)] px-5 py-2.5 text-sm font-bold text-[color:var(--color-primary-fg)] shadow-[var(--shadow-glow-violet)]"
               >
                 Explore the marketplace
@@ -62,7 +60,7 @@ export function FavoritesClient() {
             }
           />
         ) : (
-          <SnapshotGrid items={active.items} locale={locale} />
+          <SnapshotGrid items={active.items} />
         )}
       </div>
     </>

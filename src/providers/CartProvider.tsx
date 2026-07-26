@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState, useCallback, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useMemo, useState, useCallback, type ReactNode } from "react";
 import type { Cart, CartItem } from "@/types/cart";
 import { toast } from "sonner";
 import { CartToast } from "@/components/cart/CartToast/CartToast";
@@ -130,13 +130,12 @@ export function CartProvider({ children }: { children: ReactNode }) {
     setCart(emptyCart);
   }, []);
 
-  return (
-    <CartContext.Provider
-      value={{ cart, addItem, removeItem, updateQuantity, clearCart, itemCount: cart.itemCount, cartBounce }}
-    >
-      {children}
-    </CartContext.Provider>
+  const value = useMemo(
+    () => ({ cart, addItem, removeItem, updateQuantity, clearCart, itemCount: cart.itemCount, cartBounce }),
+    [cart, addItem, removeItem, updateQuantity, clearCart, cartBounce]
   );
+
+  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }
 
 export function useCart() {

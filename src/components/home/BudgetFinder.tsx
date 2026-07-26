@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { Link } from "@/i18n/routing";
 import { ArrowRight, Wallet } from "lucide-react";
 import type { CatalogItem } from "@/lib/skins/queries";
-import { formatUSD } from "@/components/skins/SkinCard";
+import { useCurrency } from "@/providers/CurrencyProvider";
 import { curateRow } from "@/lib/skins/assortment";
 
 // "Find skins within your budget" — an interactive amber gauge. The pool is a
@@ -15,6 +15,7 @@ const TIERS = [25, 50, 100, 250, 500, 1000] as const;
 export function BudgetFinder({ pool }: { pool: CatalogItem[] }) {
   const [idx, setIdx] = useState(2); // default $100
   const budget = TIERS[idx];
+  const { format } = useCurrency();
 
   const matches = useMemo(() => {
     const within = pool.filter((i) => i.price <= budget);
@@ -43,7 +44,7 @@ export function BudgetFinder({ pool }: { pool: CatalogItem[] }) {
 
           <div className="mt-5 flex items-baseline gap-2">
             <span className="readout text-3xl font-extrabold text-[color:var(--color-primary)]">
-              {budget >= 1000 ? "$1000+" : formatUSD(budget)}
+              {budget >= 1000 ? `${format(1000, "USD")}+` : format(budget, "USD")}
             </span>
             <span className="microlabel">{withinCount.toLocaleString()} matches</span>
           </div>
@@ -113,7 +114,7 @@ export function BudgetFinder({ pool }: { pool: CatalogItem[] }) {
                   {item.name.split(" | ").slice(1).join(" | ") || item.name}
                 </span>
                 <span className="readout shrink-0 text-[11px] font-bold text-[color:var(--color-text)]">
-                  {formatUSD(item.price)}
+                  {format(item.price, "USD")}
                 </span>
               </div>
             </Link>

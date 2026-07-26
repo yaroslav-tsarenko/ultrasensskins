@@ -39,7 +39,6 @@ import { useFavorites } from "@/lib/hooks/useFavorites";
 import { AnimatePresence, motion } from "framer-motion";
 import { UltraSensLogo } from "../DropskinLogo";
 import { CurrencySwitcher } from "./CurrencySwitcher";
-import { LanguageSwitcher } from "./LanguageSwitcher";
 import { ThemeToggle } from "./ThemeToggle";
 
 interface SkinSuggestion {
@@ -101,7 +100,7 @@ export function Header() {
   const router = useRouter();
   const pathname = usePathname();
   const { user, role, signOut } = useAuth();
-  const { symbol } = useCurrency();
+  const { format, symbol } = useCurrency();
   const { count: favCount } = useFavorites();
 
   const [scrolled, setScrolled] = useState(false);
@@ -266,8 +265,7 @@ export function Header() {
                 </span>
                 {s.lowestPrice != null && (
                   <span className="shrink-0 font-mono text-[12px] font-bold tabular-nums text-[color:var(--color-primary)]">
-                    {symbol}
-                    {s.lowestPrice.toFixed(2)}
+                    {format(s.lowestPrice, "USD")}
                   </span>
                 )}
               </button>
@@ -538,8 +536,6 @@ export function Header() {
               <ThemeToggle />
               <span className="h-4 w-px bg-[color:var(--color-border)]" />
               <CurrencySwitcher />
-              <span className="h-4 w-px bg-[color:var(--color-border)]" />
-              <LanguageSwitcher />
             </div>
 
             {/* Favorites */}
@@ -842,8 +838,6 @@ export function Header() {
                     <ThemeToggle />
                     <span className="h-4 w-px bg-[color:var(--color-border)]" />
                     <CurrencySwitcher />
-                    <span className="h-4 w-px bg-[color:var(--color-border)]" />
-                    <LanguageSwitcher />
                   </div>
                 </div>
                 {user ? (

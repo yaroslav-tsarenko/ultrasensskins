@@ -1,9 +1,5 @@
-import createMiddleware from "next-intl/middleware";
 import { type NextRequest, NextResponse } from "next/server";
-import { routing } from "@/i18n/routing";
 import { verifyTokenEdge } from "@/lib/token-edge";
-
-const intlMiddleware = createMiddleware(routing);
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
@@ -14,20 +10,16 @@ export async function middleware(request: NextRequest) {
     return NextResponse.rewrite(url);
   }
 
-  if (pathname.startsWith("/admin") || pathname.startsWith("/api")) {
+  if (pathname.startsWith("/admin")) {
     const token = request.cookies.get("session_token")?.value;
     const payload = token ? await verifyTokenEdge(token) : null;
 
-    if (pathname.startsWith("/admin")) {
-      if (!payload) {
-        return NextResponse.redirect(new URL("/en/auth/login", request.url));
-      }
+    if (!payload) {
+      return NextResponse.redirect(new URL("/auth/login", request.url));
     }
-
-    return NextResponse.next();
   }
 
-  return intlMiddleware(request);
+  return NextResponse.next();
 }
 
 export const config = {

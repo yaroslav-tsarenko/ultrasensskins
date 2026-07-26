@@ -8,13 +8,7 @@ import { SkinCard } from "@/components/skins/SkinCard";
 // Horizontal, drag-to-scroll rail of skin cards. Pointer-drag on desktop,
 // native touch scroll on mobile, plus arrow controls. Momentum comes from the
 // browser's native scroll; we only translate a drag gesture into scrollLeft.
-export function TrendingCarousel({
-  items,
-  locale,
-}: {
-  items: CatalogItem[];
-  locale: string;
-}) {
+export function TrendingCarousel({ items }: { items: CatalogItem[] }) {
   const railRef = useRef<HTMLDivElement>(null);
   const drag = useRef<{ startX: number; startLeft: number } | null>(null);
   const [dragging, setDragging] = useState(false);
@@ -74,7 +68,7 @@ export function TrendingCarousel({
       >
         {items.map((item) => (
           <div key={item.listingId} className="w-[190px] shrink-0 snap-start sm:w-[210px]">
-            <SkinCard item={item} locale={locale} />
+            <SkinCard item={item} />
           </div>
         ))}
       </div>

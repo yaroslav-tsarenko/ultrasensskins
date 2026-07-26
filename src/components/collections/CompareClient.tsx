@@ -1,16 +1,17 @@
 "use client";
 
-import { useParams } from "next/navigation";
 import Link from "next/link";
 import { Trash2, X } from "lucide-react";
 import { useCompare } from "@/lib/hooks/useCompare";
-import { formatUSD } from "@/components/skins/SkinCard";
+import { useCurrency } from "@/providers/CurrencyProvider";
 import { CollectionHeader, EmptyState } from "./CollectionShell";
 import type { SkinSnapshot } from "@/lib/skins/snapshot";
 
-const ROWS: { label: string; render: (s: SkinSnapshot) => React.ReactNode; best?: "min" | "max"; value?: (s: SkinSnapshot) => number | null }[] = [
-  { label: "Price", render: (s) => formatUSD(s.price), best: "min", value: (s) => s.price },
-  { label: "Steam price", render: (s) => (s.steamPrice != null ? formatUSD(s.steamPrice) : "—") },
+type UsdFormatter = (amount: number) => string;
+
+const ROWS: { label: string; render: (s: SkinSnapshot, fmt: UsdFormatter) => React.ReactNode; best?: "min" | "max"; value?: (s: SkinSnapshot) => number | null }[] = [
+  { label: "Price", render: (s, fmt) => fmt(s.price), best: "min", value: (s) => s.price },
+  { label: "Steam price", render: (s, fmt) => (s.steamPrice != null ? fmt(s.steamPrice) : "—") },
   { label: "Discount", render: (s) => (s.discountPct ? `−${Math.round(s.discountPct)}%` : "—"), best: "max", value: (s) => s.discountPct ?? 0 },
   { label: "Float", render: (s) => (s.float != null ? s.float.toFixed(4) : "—"), best: "min", value: (s) => s.float },
   { label: "Exterior", render: (s) => s.exterior },
@@ -20,10 +21,10 @@ const ROWS: { label: string; render: (s: SkinSnapshot) => React.ReactNode; best?
 ];
 
 export function CompareClient() {
-  const params = useParams();
-  const locale = (params?.locale as string) ?? "en";
   const compare = useCompare();
   const items = compare.items;
+  const { format } = useCurrency();
+  const fmtUsd: UsdFormatter = (amount) => format(amount, "USD");
 
   const bestFor = (row: (typeof ROWS)[number]): string | null => {
     if (!row.best || !row.value) return null;
@@ -60,7 +61,7 @@ export function CompareClient() {
             hint="Add skins with the compare icon on any card or detail page — up to four at once."
             cta={
               <Link
-                href={`/${locale}/catalog`}
+                href="/catalog"
                 className="inline-flex items-center rounded-lg bg-[color:var(--color-primary)] px-5 py-2.5 text-sm font-bold text-[color:var(--color-primary-fg)] shadow-[var(--shadow-glow-violet)]"
               >
                 Browse skins
@@ -83,7 +84,7 @@ export function CompareClient() {
                         >
                           <X className="h-3.5 w-3.5" />
                         </button>
-                        <Link href={`/${locale}/skin/${s.skinId}?listing=${s.listingId}`} className="block">
+                        <Link href={`/skin/${s.skinId}?listing=${s.listingId}`} className="block">
                           <div className="tech-grid relative mb-2 aspect-[4/3] overflow-hidden rounded-lg" style={{ ["--rarity" as string]: s.rarityColor }}>
                             <div className="rarity-strip absolute inset-x-0 top-0 h-[3px]" />
                             {s.imageUrl && (
@@ -118,7 +119,7 @@ export function CompareClient() {
                             best === s.skinId ? "text-[color:var(--color-success)]" : "text-[color:var(--color-text)]"
                           }`}
                         >
-                          {row.render(s)}
+                          {row.render(s, fmtUsd)}
                         </td>
                       ))}
                     </tr>

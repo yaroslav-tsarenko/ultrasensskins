@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { Suspense, useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { useSearchParams } from "next/navigation";
 import { Search } from "lucide-react";
@@ -9,7 +9,7 @@ import { EmptyState } from "@/components/shared/EmptyState/EmptyState";
 import { LoadingSpinner } from "@/components/shared/LoadingSpinner/LoadingSpinner";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs/Breadcrumbs";
 
-export default function SearchPage() {
+function SearchView() {
   const t = useTranslations("common");
   const nav = useTranslations("nav");
   const searchParams = useSearchParams();
@@ -69,5 +69,13 @@ export default function SearchPage() {
         <EmptyState title={t("noResults")} actionLabel={nav("catalog")} actionHref="/catalog" />
       ) : null}
     </div>
+  );
+}
+
+export default function SearchPage() {
+  return (
+    <Suspense>
+      <SearchView />
+    </Suspense>
   );
 }
