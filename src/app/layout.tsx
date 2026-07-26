@@ -43,19 +43,87 @@ export const metadata: Metadata = {
   description: brand.description,
   applicationName: brand.applicationName,
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || brand.url),
+  alternates: { canonical: "/" },
+  keywords: [
+    "CS2 skins",
+    "buy CS2 skins",
+    "CS2 marketplace",
+    "CS:GO skins",
+    "knives",
+    "gloves",
+    "covert skins",
+    "float value",
+    "Steam trade",
+    brand.displayName,
+  ],
+  authors: [{ name: brand.displayName, url: brand.url }],
+  creator: brand.displayName,
+  publisher: brand.company.legalName,
+  category: "shopping",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  formatDetection: { email: false, address: false, telephone: false },
   openGraph: {
     type: "website",
     siteName: brand.displayName,
     url: brand.url,
+    locale: "en_US",
     title: `${brand.displayName} — ${brand.tagline}`,
     description: brand.description,
   },
   twitter: {
     card: "summary_large_image",
     site: brand.social.twitter,
-    title: brand.displayName,
+    creator: brand.social.twitter,
+    title: `${brand.displayName} — ${brand.tagline}`,
+    description: brand.description,
   },
   icons: { icon: "/icon.svg", apple: "/icon.svg" },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${brand.url}/#organization`,
+      name: brand.displayName,
+      legalName: brand.company.legalName,
+      url: brand.url,
+      logo: `${brand.url}/icon.svg`,
+      sameAs: [brand.social.linkedin, brand.social.instagram],
+      contactPoint: {
+        "@type": "ContactPoint",
+        email: brand.contact.email,
+        contactType: "customer support",
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${brand.url}/#website`,
+      url: brand.url,
+      name: brand.displayName,
+      description: brand.description,
+      publisher: { "@id": `${brand.url}/#organization` },
+      potentialAction: {
+        "@type": "SearchAction",
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate: `${brand.url}/search?q={search_term_string}`,
+        },
+        "query-input": "required name=search_term_string",
+      },
+    },
+  ],
 };
 
 export default async function RootLayout({
@@ -73,6 +141,10 @@ export default async function RootLayout({
       className={`${spaceGrotesk.variable} ${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider>
             <AuthProvider>

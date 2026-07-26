@@ -16,9 +16,25 @@ export async function generateMetadata({
   const { id } = await params;
   const skin = await getSkinPageData(id);
   if (!skin) return { title: `Skin — ${brand.displayName}` };
+  const description = `Buy ${skin.name} on ${brand.displayName}. Live float, pattern and cross-market price data.`;
+  const canonical = `/skin/${skin.id}`;
   return {
-    title: `${skin.name} — ${brand.displayName}`,
-    description: `Buy ${skin.name} on ${brand.displayName}. Live float, pattern and cross-market price data.`,
+    title: skin.name,
+    description,
+    alternates: { canonical },
+    openGraph: {
+      type: "website",
+      url: canonical,
+      title: `${skin.name} — ${brand.displayName}`,
+      description,
+      images: skin.imageUrl ? [{ url: skin.imageUrl, alt: skin.name }] : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: skin.name,
+      description,
+      images: skin.imageUrl ? [skin.imageUrl] : undefined,
+    },
   };
 }
 
