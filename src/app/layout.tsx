@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   keywords: [
     "CS2 skins",
     "buy CS2 skins",
-    "CS2 marketplace",
+    "CS2 skins store",
     "CS:GO skins",
     "knives",
     "gloves",

@@ -5,10 +5,10 @@ export const metadata = { title: "Policies — UltraSensSkin" };
 
 const policies = [
   { label: "Terms and Conditions", href: "/policies/terms" },
-  { label: "Trade Delivery Policy", href: "/policies/shipping" },
+  { label: "Digital Item Delivery Policy", href: "/policies/shipping" },
   { label: "Privacy Policy", href: "/policies/privacy" },
   { label: "Cookie Policy", href: "/policies/cookies" },
-  { label: "Refunds and Cancellation Policy", href: "/policies/returns" },
+  { label: "Refund, Cancellation and Withdrawal Policy", href: "/policies/returns" },
   { label: "Payment Policy", href: "/policies/payment" },
 ];
 

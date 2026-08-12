@@ -290,8 +290,8 @@ export default function ContactPage() {
                 <span className="font-semibold">Within 24h</span>
               </div>
               <div className="flex justify-between text-[13px]">
-                <span className="opacity-70">Wholesale (B2B)</span>
-                <span className="font-semibold">Within 48h</span>
+                <span className="opacity-70">Trade & delivery</span>
+                <span className="font-semibold">Within 24h</span>
               </div>
             </div>
           </div>

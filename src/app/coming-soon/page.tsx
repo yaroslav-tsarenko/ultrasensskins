@@ -28,7 +28,7 @@ export default function ComingSoonPage() {
 
         <div className="mt-2 flex flex-wrap items-center justify-center gap-3">
           <Link
-            href="/catalog"
+            href="/store"
             className="inline-flex items-center gap-2 rounded-full bg-[color:var(--color-primary)] px-5 py-3 text-sm font-bold text-[color:var(--color-primary-fg)] transition-all hover:bg-[color:var(--color-primary-hover)]"
           >
             Back to market <ArrowRight size={15} />

@@ -24,11 +24,11 @@ const faqs = [
   },
   {
     q: "How does payment work?",
-    a: "Purchases are paid from your UltraSensSkin wallet balance. Your funds are only captured once the trade offer is confirmed, so you're covered by buyer protection on every trade.",
+    a: "You pay for each order directly at checkout by Visa or Mastercard — there's no wallet or stored balance. Your card is processed securely and your order is confirmed the moment payment clears.",
   },
   {
     q: "Can I cancel a purchase?",
-    a: "If a trade offer hasn't been sent yet, contact support and we'll cancel and refund your balance. Once a skin has been delivered to your inventory the trade is final.",
+    a: "If a trade offer hasn't been sent yet, contact support and we'll cancel and refund your payment. Once a skin has been delivered to your inventory the trade is final.",
   },
   {
     q: "What are float and pattern?",
@@ -91,7 +91,7 @@ export default function FaqPage() {
             Frequently Asked <span className="text-[color:var(--color-accent)]">Questions</span>
           </h1>
           <p className="text-base leading-relaxed text-[color:var(--color-text-secondary)] sm:text-lg">
-            Everything you need to know about buying and selling CS2 skins
+            Everything you need to know about buying CS2 skins
           </p>
         </div>
 

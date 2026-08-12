@@ -4,638 +4,532 @@ export const metadata = { title: "Privacy Policy — UltraSensSkin" };
 
 export default function PrivacyPolicyPage() {
   return (
-    <PolicyLayout title="Privacy Policy" lastUpdated="29 May 2026">
+    <PolicyLayout title="Privacy Policy" lastUpdated="9 August 2026">
       <p>
-        This Privacy Policy explains how ULTRASENS LT MB, trading as UltraSensSkin, collects, uses, stores, shares,
-        and protects personal data when you visit www.ultrasensskin.com, create an account, place an order,
-        contact us, use our services, or otherwise interact with us.
+        This Privacy Policy explains how ULTRASENS LT, MB collects, uses, stores and shares personal data when you
+        access or use ultrasensskin.com, create an account, sign in through Steam, purchase a Digital Item, receive
+        a Steam Trade Offer, or contact us.
       </p>
-      <p>The Website is operated by:</p>
+      <p>The Service is operated by:</p>
       <ContactBlock />
       <p>
-        In this Privacy Policy, &ldquo;UltraSensSkin&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo; or
-        &ldquo;our&rdquo; means ULTRASENS LT MB. &ldquo;Customer&rdquo;, &ldquo;you&rdquo; or
-        &ldquo;your&rdquo; means any person using the Website, placing an order, creating an account,
-        contacting us, or interacting with our services.
+        For the purposes of the General Data Protection Regulation (&ldquo;GDPR&rdquo;), ULTRASENS LT, MB is the
+        controller of the personal data described in this Privacy Policy, except where another organisation
+        processes personal data as an independent controller.
       </p>
       <p>
-        We are committed to protecting your privacy and handling your personal data lawfully, fairly, and
-        transparently.
+        In this Policy, &ldquo;UltraSensSkin&rdquo;, &ldquo;ULTRASENS&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;
+        and &ldquo;our&rdquo; refer to ULTRASENS LT, MB. &ldquo;You&rdquo; and &ldquo;your&rdquo; refer to the
+        individual using the Service.
       </p>
 
-      <h2>1. Scope of This Privacy Policy</h2>
-      <p>1.1 This Privacy Policy applies to personal data processed in connection with:</p>
+      <h2>1. Scope</h2>
+      <p>This Privacy Policy applies to personal data processed through:</p>
       <ul>
-        <li>visiting or browsing the Website;</li>
-        <li>creating or using a customer account;</li>
-        <li>placing, managing, or receiving an order;</li>
-        <li>buying or selling CS2 in-game items (skins) delivered through Steam;</li>
-        <li>linking a Steam account and providing a Steam trade URL;</li>
-        <li>contacting customer support;</li>
-        <li>requesting trade delivery updates, refunds, cancellations, or support;</li>
-        <li>subscribing to marketing communications;</li>
-        <li>interacting with cookies, analytics, advertising, or similar technologies;</li>
-        <li>communicating with us by email, phone, forms, or other channels.</li>
+        <li>ultrasensskin.com;</li>
+        <li>your UltraSensSkin Account;</li>
+        <li>Steam Login;</li>
+        <li>the purchase and delivery process;</li>
+        <li>payment and fraud-prevention processes;</li>
+        <li>Steam Trade Offers;</li>
+        <li>customer support; and</li>
+        <li>related security and compliance activities.</li>
       </ul>
       <p>
-        1.3 This Privacy Policy should be read together with our Terms and Conditions, Trade Delivery Policy,
-        Refunds and Cancellation Policy, Cookie Policy, and any other policy or notice made available on the
-        Website.
+        This Policy does not govern Steam, card issuers, payment service providers or other independent
+        third-party services. Those organisations may process personal data under their own privacy documentation.
       </p>
 
       <h2>2. Data Controller</h2>
-      <p>
-        2.1 For the purposes of applicable data protection laws, including the UK General Data Protection
-        Regulation, the Data Protection Act 2018, and, where applicable, the EU General Data Protection
-        Regulation, ULTRASENS LT MB is the data controller of your personal data.
-      </p>
-      <p>2.2 This means we determine why and how your personal data is processed.</p>
-      <p>2.3 You can contact us about privacy matters using the following details:</p>
+      <p>The controller responsible for the processing described in this Policy is:</p>
       <ContactBlock />
+      <p>Privacy questions and requests may be sent to info@ultrasensskin.com.</p>
+      <p>ULTRASENS has not appointed a data protection officer unless updated contact information is published through the Service.</p>
+
+      <h2>3. Minimum Age</h2>
+      <p>The Service is available only to individuals who are at least 18 years old.</p>
       <p>
-        2.4 We have not appointed a Data Protection Officer because we are not currently required to do so.
-        However, privacy-related enquiries may be sent to the contact details above.
+        We do not knowingly collect personal data from children. If we reasonably believe that an individual under
+        18 has created an Account or used the Service, we may close the Account and delete or restrict the relevant
+        data, except where retention is legally required.
       </p>
+      <p>If you believe that a minor has provided personal data to us, contact info@ultrasensskin.com.</p>
 
-      <h2>3. Personal Data We Collect</h2>
-      <p>3.1 The personal data we collect depends on how you interact with UltraSensSkin.</p>
-      <p>3.2 We may collect and process the following categories of personal data.</p>
-
-      <h3>3.2.1 Identity and Contact Data</h3>
-      <p>This may include:</p>
+      <h2>4. Categories of Personal Data</h2>
+      <p>Depending on how you use the Service, we may process the following categories of personal data.</p>
+      <h3>4.1 Steam account data</h3>
+      <p>When you sign in through Steam or connect a Steam Account, we may receive or access:</p>
       <ul>
-        <li>full name;</li>
-        <li>billing address;</li>
-        <li>email address;</li>
-        <li>account username or customer reference.</li>
-      </ul>
-
-      <h3>3.2.2 Steam Account Data</h3>
-      <p>When you link your Steam account, we may process:</p>
-      <ul>
-        <li>your SteamID and Steam persona (display) name;</li>
-        <li>your Steam avatar;</li>
-        <li>your Steam trade URL and trade token;</li>
-        <li>your Steam inventory information relevant to a trade.</li>
-      </ul>
-
-      <h3>3.2.3 Account Data</h3>
-      <p>If you create an account or use customer account features, we may process:</p>
-      <ul>
-        <li>account login details;</li>
-        <li>account preferences;</li>
-        <li>linked Steam account;</li>
-        <li>wallet balance and order history;</li>
-        <li>watched or saved skins, where available;</li>
-        <li>account status;</li>
-        <li>communication preferences.</li>
+        <li>your unique SteamID;</li>
+        <li>Steam profile name;</li>
+        <li>avatar and profile URL;</li>
+        <li>profile visibility status;</li>
+        <li>country or location information made public through Steam;</li>
+        <li>public inventory information;</li>
+        <li>information concerning Digital Items in the public inventory;</li>
+        <li>Steam trading eligibility or restriction status;</li>
+        <li>information necessary to verify that the Trade URL matches the connected Steam Account; and</li>
+        <li>
+          other public Steam profile information where technically returned by Steam and reasonably necessary to
+          provide or secure the Service.
+        </li>
       </ul>
       <p>
-        We do not have access to your password in readable form where secure password systems are used.
+        Steam Login does not provide us with your Steam password. We do not ask you to disclose your Steam
+        password, Steam Guard code, API key or account recovery code.
       </p>
-
-      <h3>3.2.4 Order and Transaction Data</h3>
-      <p>When you place an order, we may process:</p>
-      <ul>
-        <li>items purchased or sold;</li>
-        <li>order number;</li>
-        <li>order value;</li>
-        <li>selected currency;</li>
-        <li>payment and wallet status;</li>
-        <li>trade delivery status;</li>
-        <li>Steam trade offer records;</li>
-        <li>invoice and receipt information;</li>
-        <li>refund and cancellation records;</li>
-        <li>customer service history related to the order.</li>
-      </ul>
-
-      <h3>3.2.5 Payment Data</h3>
-      <p>Payments are processed by secure third-party payment providers.</p>
       <p>
-        We do not store your full card number, full card security code, or complete card credentials.
+        We do not intentionally collect unrelated information about your Steam friends, gameplay history,
+        achievements or community activity unless such information is technically returned, publicly available and
+        reasonably necessary for security or a specific Service feature.
       </p>
-      <p>We may receive and store limited payment-related information, such as:</p>
+      <h3>4.2 Account and contact data</h3>
+      <p>We may process:</p>
       <ul>
-        <li>payment confirmation;</li>
-        <li>transaction ID;</li>
-        <li>payment provider reference;</li>
-        <li>last four digits of a card where provided by the payment provider;</li>
-        <li>card brand, such as Visa or Mastercard;</li>
-        <li>fraud screening status;</li>
-        <li>refund or chargeback information.</li>
+        <li>email address, if provided during registration, checkout or support;</li>
+        <li>Account identifier;</li>
+        <li>Account creation and login dates;</li>
+        <li>selected language and currency;</li>
+        <li>Account status;</li>
+        <li>consent and policy acceptance records;</li>
+        <li>country of residence or access;</li>
+        <li>age or eligibility confirmation; and</li>
+        <li>information you provide when updating or securing your Account.</li>
       </ul>
-
-      <h3>3.2.6 Trade Delivery Data</h3>
-      <p>To deliver your order to your Steam inventory, we may process:</p>
+      <h3>4.3 Trade URL and delivery data</h3>
+      <p>To deliver a purchased Digital Item, we may process:</p>
       <ul>
-        <li>your Steam trade URL and trade token;</li>
-        <li>your SteamID and trade partner ID;</li>
-        <li>trade offer identifiers and status;</li>
-        <li>trade hold and delivery timing information;</li>
-        <li>records of items sent to or received from your account.</li>
+        <li>Steam Trade URL;</li>
+        <li>receiving SteamID;</li>
+        <li>sending SteamID;</li>
+        <li>Trade Offer ID;</li>
+        <li>Trade Offer status;</li>
+        <li>offer creation, acceptance, rejection and expiry timestamps;</li>
+        <li>Digital Item asset identifiers;</li>
+        <li>delivery status;</li>
+        <li>Steam trade history relevant to the Order;</li>
+        <li>applicable Steam trade restrictions; and</li>
+        <li>technical records showing whether delivery was completed.</li>
       </ul>
-      <p>
-        Delivery is carried out through the Steam trading system operated by Valve. Certain trade details are
-        exchanged with Steam to send and confirm trade offers.
-      </p>
-
-      <h3>3.2.7 Customer Support and Communication Data</h3>
-      <p>When you contact us, we may process:</p>
+      <h3>4.4 Order and transaction data</h3>
+      <p>When you place an Order, we may process:</p>
       <ul>
-        <li>email correspondence;</li>
-        <li>phone call details;</li>
-        <li>contact form submissions;</li>
-        <li>support request details;</li>
-        <li>product questions;</li>
-        <li>complaint details;</li>
-        <li>refund or cancellation requests;</li>
-        <li>trade dispute information;</li>
-        <li>screenshots, files, or other information you provide to evidence a failed trade or an item not matching your order.</li>
+        <li>Order number;</li>
+        <li>selected Digital Item;</li>
+        <li>item name, type and characteristics;</li>
+        <li>item float value, pattern, wear, stickers or other relevant attributes;</li>
+        <li>price;</li>
+        <li>currency;</li>
+        <li>VAT and invoice information;</li>
+        <li>Order date and time;</li>
+        <li>Order status;</li>
+        <li>cancellation and refund records;</li>
+        <li>transaction correspondence; and</li>
+        <li>records needed to establish, perform or defend the purchase contract.</li>
       </ul>
-
-      <h3>3.2.8 Technical and Usage Data</h3>
-      <p>When you use the Website, we may automatically collect:</p>
+      <h3>4.5 Payment data</h3>
+      <p>Card payments are processed with the assistance of authorised payment service providers.</p>
+      <p>Depending on the payment process, we may receive:</p>
+      <ul>
+        <li>payment status;</li>
+        <li>payment transaction reference;</li>
+        <li>amount and currency;</li>
+        <li>card network;</li>
+        <li>limited masked card information, such as the last four digits;</li>
+        <li>card issuer country;</li>
+        <li>authentication status;</li>
+        <li>fraud or risk indicators;</li>
+        <li>refund status; and</li>
+        <li>chargeback or payment dispute information.</li>
+      </ul>
+      <p>We do not intend to receive or store:</p>
+      <ul>
+        <li>complete card numbers;</li>
+        <li>CVV or CVC security codes;</li>
+        <li>card PINs; or</li>
+        <li>online banking credentials.</li>
+      </ul>
+      <p>Complete payment information may be collected directly by the payment service provider under its own privacy documentation.</p>
+      <h3>4.6 Technical and security data</h3>
+      <p>When you access or use the Service, our systems or infrastructure providers may automatically process:</p>
       <ul>
         <li>IP address;</li>
+        <li>approximate country or region derived from the IP address;</li>
         <li>browser type and version;</li>
         <li>device type;</li>
         <li>operating system;</li>
-        <li>approximate location based on IP address;</li>
-        <li>pages visited;</li>
-        <li>referring website;</li>
-        <li>time and date of visits;</li>
-        <li>session information;</li>
-        <li>clickstream data;</li>
-        <li>error logs;</li>
-        <li>security logs;</li>
-        <li>performance data.</li>
+        <li>language and time-zone settings;</li>
+        <li>session identifier;</li>
+        <li>login time;</li>
+        <li>pages or Service functions requested;</li>
+        <li>error and diagnostic data;</li>
+        <li>security events;</li>
+        <li>fraud-prevention signals; and</li>
+        <li>server and access logs.</li>
       </ul>
-
-      <h3>3.2.9 Cookie and Tracking Data</h3>
       <p>
-        We may use cookies and similar technologies to collect information about your browsing activity,
-        preferences, cart activity, analytics interactions, and, where you consent, marketing or advertising
-        interactions.
+        This information is used to operate and secure the Service, enforce geographic restrictions, diagnose
+        technical problems and prevent abuse.
       </p>
-      <p>More details are provided in our Cookie Policy.</p>
-
-      <h3>3.2.10 Marketing Preference Data</h3>
-      <p>If you subscribe to marketing or interact with promotional communications, we may process:</p>
+      <p>
+        At the date of publication, UltraSensSkin does not use third-party advertising cookies, behavioural
+        advertising tools, marketing pixels or third-party analytics tools.
+      </p>
+      <h3>4.7 Communications and support data</h3>
+      <p>When you contact us, we may process:</p>
       <ul>
+        <li>your name or Account identifier;</li>
         <li>email address;</li>
-        <li>subscription status;</li>
-        <li>marketing consent;</li>
-        <li>unsubscribe records;</li>
-        <li>communication preferences;</li>
-        <li>email engagement data, such as opens and clicks, where supported by our marketing tools.</li>
+        <li>SteamID;</li>
+        <li>Order number;</li>
+        <li>the contents of your message;</li>
+        <li>attachments and screenshots;</li>
+        <li>complaint or refund information;</li>
+        <li>our response; and</li>
+        <li>related internal support notes.</li>
       </ul>
-
-      <h3>3.2.11 Fraud Prevention and Compliance Data</h3>
-      <p>
-        To protect our business, customers, payment systems, and legal obligations, we may process:
-      </p>
+      <p>Please do not provide passwords, authentication codes, full card details or unrelated sensitive information in support communications.</p>
+      <h3>4.8 Compliance and verification data</h3>
+      <p>Where reasonably necessary for fraud prevention, legal compliance or transaction security, we may request or receive:</p>
       <ul>
-        <li>order risk indicators;</li>
-        <li>payment verification results;</li>
-        <li>billing and delivery mismatches;</li>
-        <li>IP address and location indicators;</li>
-        <li>sanctions or restricted destination checks;</li>
-        <li>chargeback history;</li>
-        <li>suspected fraud records;</li>
-        <li>compliance review notes.</li>
+        <li>confirmation of age;</li>
+        <li>confirmation of country or residence;</li>
+        <li>payment authorisation evidence;</li>
+        <li>information concerning a disputed payment;</li>
+        <li>sanctions-screening results;</li>
+        <li>account ownership evidence; or</li>
+        <li>other information proportionate to a specific security or legal concern.</li>
       </ul>
+      <p>We will not claim to perform a specific identity verification procedure unless that procedure is actually implemented for the relevant transaction.</p>
+      <h3>4.9 Special-category data</h3>
+      <p>
+        We do not intentionally request or process data revealing racial or ethnic origin, political opinions,
+        religious beliefs, health information, sexual orientation, biometric identifiers or other special
+        categories of personal data.
+      </p>
+      <p>Do not send such information unless it is strictly necessary for a legal claim and has been specifically requested through an appropriate secure process.</p>
 
-      <h2>4. Personal Data We Do Not Intend to Collect</h2>
-      <p>
-        4.1 We do not intentionally collect special category personal data, such as information about health,
-        race, ethnicity, political opinions, religious beliefs, trade union membership, biometric data, or
-        sexual orientation.
-      </p>
-      <p>
-        4.2 Please do not send us special category data unless it is strictly necessary for a specific matter
-        and we have requested it.
-      </p>
-      <p>4.3 We do not knowingly collect personal data from children.</p>
-      <p>
-        4.4 The Website is intended for users aged 18 or over because it involves real-money transactions for
-        digital in-game items.
-      </p>
-
-      <h2>5. How We Collect Personal Data</h2>
-      <p>5.1 We may collect personal data directly from you when you:</p>
+      <h2>5. Sources of Personal Data</h2>
+      <p>We may obtain personal data:</p>
       <ul>
-        <li>visit the Website;</li>
-        <li>create an account;</li>
-        <li>link a Steam account or add a trade URL;</li>
-        <li>place an order;</li>
-        <li>enter billing details or add wallet funds;</li>
-        <li>make a payment;</li>
-        <li>contact us;</li>
-        <li>request support;</li>
-        <li>submit a refund or cancellation request;</li>
-        <li>subscribe to marketing;</li>
-        <li>complete forms or provide information through the Website.</li>
+        <li>directly from you;</li>
+        <li>from Steam through Steam Login, Steam APIs or publicly available Steam information;</li>
+        <li>from payment service providers, card networks or financial institutions;</li>
+        <li>from Fulfilment Providers involved in delivering an Order;</li>
+        <li>automatically from browsers, devices, servers and security systems;</li>
+        <li>from support communications;</li>
+        <li>from fraud-prevention or compliance service providers; and</li>
+        <li>from competent authorities or public sources where permitted by law.</li>
       </ul>
-      <p>
-        5.2 We may collect personal data automatically when you use the Website, including through cookies,
-        analytics tools, logs, security systems, and similar technologies.
-      </p>
-      <p>5.3 We may receive personal data from third parties, including:</p>
+
+      <h2>6. Purposes and Legal Bases</h2>
+      <p>We process personal data only where we have an applicable legal basis.</p>
+      <h3>6.1 Providing the Service and performing a contract</h3>
+      <p>Under Article 6(1)(b) GDPR, we process data where necessary to:</p>
       <ul>
-        <li>payment processors;</li>
-        <li>card networks and fraud prevention providers;</li>
-        <li>Valve / Steam, for trade delivery;</li>
-        <li>e-commerce and hosting platform providers;</li>
-        <li>analytics providers;</li>
-        <li>marketing and communication service providers;</li>
-        <li>IT, hosting, security, and infrastructure providers;</li>
-        <li>professional advisers;</li>
-        <li>public authorities where legally required.</li>
+        <li>create and administer your Account;</li>
+        <li>authenticate you through Steam;</li>
+        <li>display relevant Digital Items;</li>
+        <li>receive and process an Order;</li>
+        <li>process payment status;</li>
+        <li>issue an Order Confirmation and invoice;</li>
+        <li>arrange and verify delivery;</li>
+        <li>send or facilitate a Trade Offer;</li>
+        <li>handle cancellation or refund requests;</li>
+        <li>provide customer support; and</li>
+        <li>otherwise perform the purchase contract.</li>
       </ul>
-
-      <h2>6. How We Use Your Personal Data</h2>
-      <p>6.1 We use your personal data for the purposes described below.</p>
-
-      <h3>6.1.1 To Process and Fulfil Orders</h3>
-      <p>We use personal data to:</p>
+      <p>Without the data required for these purposes, we may be unable to create an Account, accept an Order or deliver an Item.</p>
+      <h3>6.2 Compliance with legal obligations</h3>
+      <p>Under Article 6(1)(c) GDPR, we may process data to:</p>
       <ul>
-        <li>receive and process orders;</li>
-        <li>confirm payment and wallet funds;</li>
-        <li>issue confirmations, receipts, and invoices;</li>
-        <li>send Steam trade offers to deliver items;</li>
-        <li>provide trade delivery status;</li>
-        <li>manage cancellations and refunds.</li>
+        <li>maintain accounting and tax records;</li>
+        <li>issue legally required invoices;</li>
+        <li>respond to valid authority requests;</li>
+        <li>comply with consumer protection requirements;</li>
+        <li>comply with sanctions and other applicable restrictions;</li>
+        <li>manage legally required retention;</li>
+        <li>investigate and report unlawful activity where required; and</li>
+        <li>comply with court orders and other binding legal processes.</li>
       </ul>
-
-      <h3>6.1.2 To Provide Customer Support</h3>
-      <p>We use personal data to:</p>
+      <h3>6.3 Legitimate interests</h3>
+      <p>
+        Under Article 6(1)(f) GDPR, we may process data where necessary for our legitimate interests or those of
+        another person, provided that those interests are not overridden by your rights and freedoms.
+      </p>
+      <p>These interests may include:</p>
       <ul>
-        <li>respond to enquiries;</li>
-        <li>assist with order, trade, or delivery questions;</li>
-        <li>investigate failed trades or items not matching an order;</li>
-        <li>manage complaints;</li>
-        <li>process refund and cancellation requests;</li>
-        <li>communicate about your order or account.</li>
+        <li>preventing fraud, phishing and payment abuse;</li>
+        <li>protecting Accounts, users and the Service;</li>
+        <li>enforcing geographic restrictions;</li>
+        <li>investigating unauthorised activity;</li>
+        <li>maintaining reliable transaction and delivery records;</li>
+        <li>detecting technical errors;</li>
+        <li>improving security and operational reliability;</li>
+        <li>preventing duplicate or improper refunds;</li>
+        <li>establishing, exercising or defending legal claims;</li>
+        <li>protecting our contractual rights; and</li>
+        <li>communicating about security or administrative matters.</li>
       </ul>
-
-      <h3>6.1.3 To Operate and Improve the Website</h3>
-      <p>We use personal data to:</p>
+      <p>You may object to processing based on legitimate interests as described in Section 14.</p>
+      <h3>6.4 Consent</h3>
+      <p>Under Article 6(1)(a) GDPR, we may process data based on consent where consent is legally required.</p>
+      <p>This may apply to:</p>
       <ul>
-        <li>maintain Website functionality;</li>
-        <li>improve navigation and user experience;</li>
-        <li>monitor performance;</li>
-        <li>fix errors;</li>
-        <li>test and improve Website features;</li>
-        <li>understand how customers use the Website.</li>
+        <li>non-essential cookies, if introduced;</li>
+        <li>optional communications;</li>
+        <li>optional Service features; or</li>
+        <li>another clearly identified purpose.</li>
       </ul>
+      <p>At the date of publication, UltraSensSkin does not use personal data for behavioural advertising or third-party analytics.</p>
+      <p>Where processing is based on consent, you may withdraw that consent at any time. Withdrawal does not affect processing that occurred before consent was withdrawn.</p>
+      <h3>6.5 Legal claims and unlawful activity</h3>
+      <p>Where necessary, personal data may also be processed to establish, exercise or defend legal claims, prevent unlawful activity, or protect the rights and safety of users, ULTRASENS and third parties.</p>
 
-      <h3>6.1.4 To Manage Accounts and Trade Access</h3>
-      <p>We use personal data to:</p>
+      <h2>7. Steam Login</h2>
+      <p>Steam Login allows us to authenticate your SteamID without receiving your Steam password.</p>
+      <p>When you use Steam Login:</p>
       <ul>
-        <li>create and manage customer accounts;</li>
-        <li>verify business or trade information where applicable;</li>
-        <li>provide account features;</li>
-        <li>manage trade pricing or business access where available;</li>
-        <li>maintain account security.</li>
+        <li>you are redirected to or interact with Steam;</li>
+        <li>Steam authenticates your credentials;</li>
+        <li>Steam returns an identifier confirming the relevant Steam Account; and</li>
+        <li>we may retrieve public Steam profile information needed for the Service.</li>
       </ul>
+      <p>Steam acts independently in relation to its own authentication systems and processing activities. Your use of Steam remains subject to Steam&rsquo;s terms and privacy documentation.</p>
+      <p>You should access Steam Login only through an official Steam domain and must never provide Steam credentials directly to UltraSensSkin or a Fulfilment Provider.</p>
 
-      <h3>6.1.5 To Prevent Fraud and Protect Security</h3>
-      <p>We use personal data to:</p>
+      <h2>8. Payment Processing</h2>
+      <p>Payments are processed through authorised third-party payment service providers.</p>
+      <p>A payment provider may process:</p>
       <ul>
-        <li>detect and prevent fraud;</li>
-        <li>monitor suspicious activity;</li>
-        <li>protect payment systems;</li>
-        <li>prevent misuse of the Website;</li>
-        <li>secure accounts and systems;</li>
-        <li>investigate unauthorised access or abuse;</li>
-        <li>manage chargebacks and payment disputes.</li>
+        <li>cardholder name;</li>
+        <li>billing address;</li>
+        <li>complete card details;</li>
+        <li>authentication data;</li>
+        <li>device and IP information;</li>
+        <li>fraud-prevention signals; and</li>
+        <li>other information required to authorise or process the payment.</li>
       </ul>
+      <p>The payment provider may act as our processor for some activities and as an independent controller for regulatory, fraud-prevention and financial compliance activities.</p>
+      <p>We may change payment providers without changing the purposes described in this Policy. The identity of a particular provider may be made available during checkout, through the payment interface, or upon a valid data protection request where required by law.</p>
 
-      <h3>6.1.6 To Comply With Legal and Regulatory Obligations</h3>
-      <p>We use personal data to:</p>
+      <h2>9. Digital Item Supply and Fulfilment Providers</h2>
+      <p>Delivery may be performed by a confidential Digital Item supplier, inventory provider, bot operator or current holder of the Item.</p>
+      <p>To complete and verify delivery, we may provide a Fulfilment Provider with:</p>
       <ul>
-        <li>comply with tax, accounting, company, consumer protection, sanctions, financial crime, and legal obligations;</li>
-        <li>keep legally required records;</li>
-        <li>respond to lawful requests from authorities;</li>
-        <li>manage disputes and legal claims.</li>
+        <li>SteamID;</li>
+        <li>Trade URL;</li>
+        <li>internal Order identifier;</li>
+        <li>selected Digital Item and asset information;</li>
+        <li>delivery instructions;</li>
+        <li>relevant Trade Offer information; and</li>
+        <li>delivery status.</li>
       </ul>
+      <p>Fulfilment Providers are not permitted to receive your Steam password, Steam Guard code, full card information or unrelated personal data from us.</p>
+      <p>The commercial identity of a Fulfilment Provider may remain confidential. However, this does not restrict any right you have under applicable data protection law to receive information about actual recipients of your personal data where disclosure is legally required.</p>
 
-      <h3>6.1.7 To Send Marketing Communications</h3>
-      <p>
-        Where permitted by law, we may use your contact details to send marketing communications about
-        products, offers, promotions, updates, or services that may be relevant to you.
-      </p>
-      <p>You can unsubscribe from marketing at any time.</p>
-
-      <h3>6.1.8 To Use Cookies and Analytics</h3>
-      <p>We use cookies and similar technologies to:</p>
+      <h2>10. Other Recipients of Personal Data</h2>
+      <p>We may disclose personal data to the following categories of recipients where necessary:</p>
       <ul>
-        <li>operate essential Website functions;</li>
-        <li>remember preferences;</li>
-        <li>maintain cart functionality;</li>
-        <li>measure Website traffic;</li>
-        <li>analyse performance;</li>
-        <li>improve the Website;</li>
-        <li>support marketing or advertising where you have given consent where required.</li>
+        <li>payment service providers;</li>
+        <li>card networks, banks and card issuers;</li>
+        <li>Digital Item supply and fulfilment providers;</li>
+        <li>hosting, infrastructure and security providers;</li>
+        <li>IT maintenance and technical service providers;</li>
+        <li>email and communication providers;</li>
+        <li>accountants, auditors, lawyers and other professional advisers;</li>
+        <li>insurers;</li>
+        <li>fraud-prevention and compliance providers;</li>
+        <li>courts, regulators, law enforcement and other authorities;</li>
+        <li>a purchaser, investor or successor in connection with a genuine corporate transaction; and</li>
+        <li>other persons where you have instructed or authorised us to disclose the data.</li>
       </ul>
-
-      <h2>7. Legal Bases for Processing</h2>
-      <p>7.1 We process personal data only where we have a lawful basis to do so.</p>
-      <table>
-        <thead>
-          <tr>
-            <th>Purpose</th>
-            <th>Legal basis</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Processing and fulfilling orders</td><td>Contractual necessity</td></tr>
-          <tr><td>Taking payment and confirming transactions</td><td>Contractual necessity</td></tr>
-          <tr><td>Delivering items via Steam trade offers</td><td>Contractual necessity</td></tr>
-          <tr><td>Handling refunds and cancellations</td><td>Contractual necessity; legal obligation; legitimate interests</td></tr>
-          <tr><td>Customer support</td><td>Contractual necessity; legitimate interests</td></tr>
-          <tr><td>Account creation and account management</td><td>Contractual necessity; legitimate interests</td></tr>
-          <tr><td>Linking and verifying your Steam account</td><td>Contractual necessity; legitimate interests</td></tr>
-          <tr><td>Fraud prevention and Website security</td><td>Legitimate interests; legal obligation</td></tr>
-          <tr><td>Tax, accounting, and legal records</td><td>Legal obligation</td></tr>
-          <tr><td>Responding to legal claims or disputes</td><td>Legitimate interests; legal obligation</td></tr>
-          <tr><td>Service improvement and Website analytics</td><td>Legitimate interests; consent where required</td></tr>
-          <tr><td>Non-essential cookies and tracking</td><td>Consent where required</td></tr>
-          <tr><td>Marketing emails</td><td>Consent or legitimate interests where permitted by law</td></tr>
-          <tr><td>Sanctions and compliance checks</td><td>Legal obligation; legitimate interests</td></tr>
-        </tbody>
-      </table>
-      <p>
-        7.2 Where we rely on legitimate interests, we do so only where we believe our interests are not
-        overridden by your rights and freedoms.
-      </p>
-      <p>
-        7.3 Our legitimate interests may include operating an online store, fulfilling customer orders,
-        improving our Website, preventing fraud, protecting our systems, managing customer relationships,
-        enforcing our Terms, and protecting our legal and commercial interests.
-      </p>
-      <p>
-        7.4 Where we rely on consent, you may withdraw your consent at any time. Withdrawal of consent does
-        not affect processing carried out before consent was withdrawn.
-      </p>
-
-      <h2>8. Marketing Communications</h2>
-      <p>
-        8.1 We may send you marketing communications where you have consented or where applicable law allows
-        us to do so.
-      </p>
-      <p>
-        8.2 Marketing communications may include product updates, offers, promotions, availability notices,
-        service updates, or information about products similar to those you have purchased or viewed.
-      </p>
-      <p>
-        8.3 You can unsubscribe from marketing communications at any time by using the unsubscribe link in
-        the relevant email or contacting us at info@ultrasensskin.com.
-      </p>
-      <p>
-        8.4 Even if you unsubscribe from marketing, we may still send you service messages, such as order
-        confirmations, trade delivery updates, payment notices, refund updates, or important account and
-        policy notices.
-      </p>
-
-      <h2>9. Cookies and Similar Technologies</h2>
-      <p>
-        9.1 The Website uses cookies and similar technologies, such as pixels, tags, local storage, and
-        analytics tools.
-      </p>
-      <p>
-        9.2 Some cookies are essential for the Website to function, including cookies used for cart
-        functionality, checkout, security, fraud prevention, and account access.
-      </p>
-      <p>
-        9.3 Non-essential cookies may be used for analytics, performance measurement, personalisation,
-        advertising, or marketing where permitted by law and where consent is required.
-      </p>
-      <p>
-        9.4 When you first visit the Website, you may be presented with a cookie banner or consent tool
-        allowing you to manage non-essential cookies.
-      </p>
-      <p>9.5 You can also manage cookies through your browser settings.</p>
-      <p>9.6 For more information, please see our Cookie Policy.</p>
-
-      <h2>10. Sharing Your Personal Data</h2>
-      <p>10.1 We do not sell your personal data.</p>
-      <p>
-        10.2 We may share your personal data with trusted third parties where necessary to operate the
-        Website, process orders, deliver goods, comply with law, or protect our business.
-      </p>
-      <p>10.3 We may share personal data with:</p>
-      <ul>
-        <li>payment processors and card payment providers;</li>
-        <li>banks, card networks, and fraud prevention providers;</li>
-        <li>Valve / Steam, for delivering items via the Steam trading system;</li>
-        <li>e-commerce platform providers;</li>
-        <li>hosting, IT, infrastructure, and security providers;</li>
-        <li>public authorities where required;</li>
-        <li>email, communication, and customer support providers;</li>
-        <li>analytics and cookie technology providers;</li>
-        <li>marketing service providers, where applicable;</li>
-        <li>professional advisers, including accountants, auditors, insurers, lawyers, and consultants;</li>
-        <li>regulators, courts, law enforcement, tax authorities, or government bodies where required by law;</li>
-        <li>business partners or successors in the event of a restructuring, merger, sale, financing, or transfer of all or part of our business.</li>
-      </ul>
-      <p>
-        10.4 We require service providers to process personal data only for authorised purposes and to apply
-        appropriate security and confidentiality measures.
-      </p>
+      <p>Service providers may access personal data only to the extent necessary for the relevant service and must be subject to appropriate confidentiality and data protection obligations.</p>
+      <p>We do not sell personal data or share it for third-party behavioural advertising.</p>
 
       <h2>11. International Data Transfers</h2>
-      <p>
-        11.1 Because UltraSensSkin sells internationally and uses third-party service providers, your personal
-        data may be processed outside the United Kingdom, the European Economic Area, or your country of
-        residence.
-      </p>
-      <p>
-        11.2 International transfers may occur where we use hosting, e-commerce, payment, analytics,
-        communication, trade delivery, or support providers located in other countries.
-      </p>
-      <p>
-        11.3 Where required by data protection law, we use appropriate safeguards for international
-        transfers. These may include:
-      </p>
+      <p>Steam, payment providers, Fulfilment Providers or infrastructure providers may operate in countries outside Lithuania or the European Economic Area (&ldquo;EEA&rdquo;).</p>
+      <p>Where personal data is transferred outside the EEA, we will ensure that the transfer has a lawful basis and appropriate safeguards where required. These may include:</p>
       <ul>
-        <li>adequacy regulations or adequacy decisions;</li>
-        <li>the UK International Data Transfer Agreement;</li>
-        <li>the UK Addendum to the EU Standard Contractual Clauses;</li>
-        <li>EU Standard Contractual Clauses;</li>
-        <li>contractual and organisational safeguards;</li>
-        <li>other lawful transfer mechanisms permitted by applicable law.</li>
+        <li>an adequacy decision adopted by the European Commission;</li>
+        <li>the European Commission&rsquo;s Standard Contractual Clauses;</li>
+        <li>supplementary contractual, organisational or technical measures;</li>
+        <li>another legally recognised transfer mechanism; or</li>
+        <li>a specific GDPR derogation where applicable.</li>
       </ul>
-      <p>
-        11.4 We take reasonable steps to ensure that personal data transferred internationally remains
-        protected in accordance with applicable data protection requirements.
-      </p>
+      <p>You may contact us for information about the safeguards applicable to a particular transfer. Some information may be redacted where necessary to protect security, confidentiality or third-party rights, without restricting the substance of your legal rights.</p>
 
       <h2>12. Data Retention</h2>
-      <p>
-        12.1 We keep personal data only for as long as reasonably necessary for the purposes described in
-        this Privacy Policy, unless a longer retention period is required or permitted by law.
-      </p>
-      <p>
-        12.2 Our retention periods may vary depending on the type of data, purpose of processing, legal
-        requirements, accounting obligations, tax rules, dispute risks, fraud prevention needs, and
-        operational requirements.
-      </p>
-      <p>12.3 As a general guide:</p>
-      <table>
-        <thead>
-          <tr>
-            <th>Data category</th>
-            <th>Typical retention period</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Order, transaction, invoice, accounting, and tax records</td><td>Up to 7 years</td></tr>
-          <tr><td>Customer account data</td><td>For as long as the account remains active, then for a reasonable period afterwards</td></tr>
-          <tr><td>Customer support communications</td><td>Up to 3 years after the matter is closed, unless longer retention is needed</td></tr>
-          <tr><td>Refund, cancellation, and complaint records</td><td>For the relevant limitation or dispute period</td></tr>
-          <tr><td>Marketing consent and unsubscribe records</td><td>Until withdrawn, then retained as needed to honour suppression preferences</td></tr>
-          <tr><td>Analytics and technical data</td><td>Usually 12&ndash;26 months, depending on the relevant tool</td></tr>
-          <tr><td>Fraud, chargeback, sanctions, or compliance records</td><td>As long as reasonably necessary for prevention, investigation, and legal compliance</td></tr>
-        </tbody>
-      </table>
-      <p>
-        12.4 We may retain data for longer where necessary to establish, exercise, or defend legal claims,
-        comply with legal obligations, investigate fraud or abuse, resolve disputes, or enforce our Terms and
-        Conditions.
-      </p>
-      <p>
-        12.5 When personal data is no longer required, we will delete it, anonymise it, or securely archive
-        it where appropriate.
-      </p>
+      <p>We retain personal data only for as long as reasonably necessary for the purposes described in this Policy, including legal, accounting, security and dispute-resolution requirements.</p>
+      <p>The applicable retention criteria include:</p>
+      <h3>Account and Steam profile data</h3>
+      <p>Retained while the Account is active and for a limited period after closure where necessary to prevent fraud, process remaining requests, resolve disputes or establish legal claims. Public Steam profile information may be refreshed, replaced or deleted when no longer needed.</p>
+      <h3>Trade URL</h3>
+      <p>Retained while needed for active or reasonably anticipated deliveries. A replaced Trade URL may remain in historical security or transaction records where necessary to investigate a completed or disputed Order.</p>
+      <h3>Order, invoice and payment records</h3>
+      <p>Retained for the period required by Lithuanian accounting, tax, consumer protection and other applicable laws, and for the period necessary to manage disputes, refunds or legal claims.</p>
+      <h3>Trade and delivery records</h3>
+      <p>Retained for as long as reasonably necessary to prove delivery, investigate reversals, prevent duplicate refunds, resolve payment disputes and establish or defend legal claims.</p>
+      <h3>Technical and security logs</h3>
+      <p>Retained for a limited security and diagnostic period. Relevant logs may be retained longer where connected to suspected fraud, a security incident, a disputed transaction or legal proceedings.</p>
+      <h3>Support communications</h3>
+      <p>Retained until the request is resolved and for a reasonable period afterwards where necessary to maintain service history, handle follow-up complaints or defend legal claims.</p>
+      <h3>Compliance information</h3>
+      <p>Retained only for as long as necessary for the applicable review, legal obligation, restriction or investigation.</p>
+      <p>When retention is no longer necessary, data will be deleted, anonymised or securely isolated unless continued retention is legally required.</p>
 
-      <h2>13. Security of Personal Data</h2>
-      <p>
-        13.1 We take reasonable technical and organisational measures to protect personal data against
-        unauthorised access, loss, misuse, alteration, disclosure, or destruction.
-      </p>
-      <p>
-        13.2 These measures may include access controls, secure payment processing, encryption where
-        appropriate, system monitoring, account security measures, provider due diligence, and internal
-        controls.
-      </p>
-      <p>
-        13.3 No website, payment system, transmission method, or storage system can be guaranteed to be
-        completely secure.
-      </p>
-      <p>
-        13.4 You are responsible for keeping your account login details confidential and for notifying us
-        promptly if you believe your account has been accessed without authorisation.
-      </p>
+      <h2>13. Automated Processing</h2>
+      <p>Payment providers and security systems may use automated tools to identify suspicious activity, assess transaction risk or approve or decline a payment.</p>
+      <p>UltraSensSkin does not currently use personal data for behavioural advertising or profiling unrelated to transaction security.</p>
+      <p>We do not intend to make decisions based solely on automated processing that produce legal or similarly significant effects, except where:</p>
+      <ul>
+        <li>the processing is necessary to enter into or perform a contract;</li>
+        <li>the processing is authorised by law;</li>
+        <li>you have provided explicit consent where legally permitted; or</li>
+        <li>the decision is made independently by a payment provider under its own legal responsibilities.</li>
+      </ul>
+      <p>Where applicable law provides such a right, you may request human review, express your point of view and contest an automated decision by contacting us.</p>
 
       <h2>14. Your Data Protection Rights</h2>
-      <p>
-        14.1 Depending on your location and applicable data protection law, you may have the following rights
-        in relation to your personal data:
-      </p>
+      <p>Subject to applicable law, you may have the following rights.</p>
+      <h3>14.1 Right of access</h3>
+      <p>You may ask whether we process your personal data and request a copy of that data, together with information about its processing.</p>
+      <h3>14.2 Right to rectification</h3>
+      <p>You may ask us to correct inaccurate personal data or complete incomplete data. Some Steam information must be corrected through Steam before the updated information can be retrieved by UltraSensSkin.</p>
+      <h3>14.3 Right to erasure</h3>
+      <p>You may ask us to delete personal data where:</p>
       <ul>
-        <li>the right to be informed about how your personal data is used;</li>
-        <li>the right to access a copy of your personal data;</li>
-        <li>the right to request correction of inaccurate or incomplete personal data;</li>
-        <li>the right to request deletion of your personal data in certain circumstances;</li>
-        <li>the right to request restriction of processing in certain circumstances;</li>
-        <li>the right to object to processing based on legitimate interests;</li>
-        <li>the right to object to direct marketing at any time;</li>
-        <li>the right to data portability in certain circumstances;</li>
-        <li>the right to withdraw consent where processing is based on consent;</li>
-        <li>rights relating to automated decision-making and profiling where applicable;</li>
-        <li>the right to lodge a complaint with a supervisory authority.</li>
+        <li>it is no longer necessary;</li>
+        <li>consent has been withdrawn and no other legal basis applies;</li>
+        <li>you have successfully objected to the processing;</li>
+        <li>the data was processed unlawfully; or</li>
+        <li>deletion is required by law.</li>
       </ul>
-      <p>
-        14.2 These rights are not absolute and may be subject to legal conditions, exemptions, identity
-        verification, and our legal obligations.
-      </p>
-      <p>14.3 To exercise your rights, please contact us at info@ultrasensskin.com.</p>
-      <p>14.4 We may need to verify your identity before responding to a request.</p>
-      <p>
-        14.5 We aim to respond to valid data protection requests within the timeframe required by applicable
-        law.
-      </p>
+      <p>The right to erasure does not apply where retention remains necessary for legal compliance, accounting, fraud prevention, legal claims or another lawful purpose.</p>
+      <h3>14.4 Right to restriction</h3>
+      <p>You may ask us to restrict processing while:</p>
+      <ul>
+        <li>data accuracy is being verified;</li>
+        <li>an objection is being considered;</li>
+        <li>the processing is unlawful but you oppose deletion; or</li>
+        <li>we no longer need the data but you require it for a legal claim.</li>
+      </ul>
+      <h3>14.5 Right to data portability</h3>
+      <p>Where processing is based on consent or contract and performed by automated means, you may request relevant personal data in a structured, commonly used and machine-readable format.</p>
+      <h3>14.6 Right to object</h3>
+      <p>You may object to processing based on legitimate interests. We will stop the relevant processing unless we demonstrate compelling legitimate grounds that override your interests, rights and freedoms, or the processing remains necessary for legal claims.</p>
+      <p>You may object to direct marketing at any time. UltraSensSkin does not currently send behavioural advertising or share data for such advertising.</p>
+      <h3>14.7 Right to withdraw consent</h3>
+      <p>Where processing is based on consent, you may withdraw that consent at any time. Withdrawal does not affect the lawfulness of processing performed before withdrawal.</p>
+      <h3>14.8 Right concerning automated decisions</h3>
+      <p>Where applicable, you may request human intervention and contest a decision based solely on automated processing that produces legal or similarly significant effects.</p>
+      <h3>14.9 Right to complain</h3>
+      <p>You may lodge a complaint with the supervisory authority in Lithuania or, where applicable, the authority in the EEA country of your habitual residence, place of work or alleged infringement.</p>
 
-      <h2>15. Complaints</h2>
-      <p>
-        15.1 If you have concerns about how we handle your personal data, please contact us first at
-        info@ultrasensskin.com so we can try to resolve the matter.
-      </p>
-      <p>
-        15.2 If you are in the United Kingdom, you have the right to lodge a complaint with the Information
-        Commissioner&rsquo;s Office.
-      </p>
-      <p>
-        15.3 If you are in the European Union or European Economic Area, you may have the right to lodge a
-        complaint with your local data protection supervisory authority.
-      </p>
+      <h2>15. Exercising Your Rights</h2>
+      <p>Requests may be sent to: info@ultrasensskin.com</p>
+      <p>Please use the subject line &ldquo;Data Protection Request&rdquo;.</p>
+      <p>Your request should identify:</p>
+      <ul>
+        <li>your SteamID or Account identifier;</li>
+        <li>the right you wish to exercise;</li>
+        <li>the information or processing concerned; and</li>
+        <li>an email address through which we can respond.</li>
+      </ul>
+      <p>We may request proportionate information to verify your identity and protect the Account from unauthorised disclosure.</p>
+      <p>We will respond without undue delay and normally within one month after receiving a valid request. That period may be extended by up to two additional months where permitted because of the complexity or number of requests. If an extension is required, we will inform you.</p>
+      <p>Requests are normally handled free of charge. A reasonable fee may be charged, or a request may be refused, only where permitted by law, including where a request is manifestly unfounded or excessive.</p>
 
-      <h2>16. Automated Decision-Making and Profiling</h2>
+      <h2>16. Supervisory Authority</h2>
+      <p>You may contact the Lithuanian data protection supervisory authority:</p>
       <p>
-        16.1 We do not currently use personal data to make decisions that are solely automated and that
-        produce legal or similarly significant effects on you.
+        State Data Protection Inspectorate
+        <br />
+        L. Sapiegos g. 17, LT-10312 Vilnius, Lithuania
+        <br />
+        Website: vdai.lrv.lt
       </p>
-      <p>
-        16.2 We may use automated tools to support fraud prevention, payment security, Website security,
-        risk scoring, or transaction monitoring.
-      </p>
-      <p>
-        16.3 These tools help identify potentially suspicious activity but do not normally make final
-        decisions that have legal or similarly significant effects without appropriate review.
-      </p>
-      <p>
-        16.4 If we introduce automated decision-making that has legal or similarly significant effects, we
-        will update this Privacy Policy and provide the information required by applicable law.
-      </p>
+      <p>The Inspectorate may require complaints submitted directly to it to be made in Lithuanian or in another form accepted by the authority.</p>
+      <p>We encourage you to contact us first so that we can attempt to resolve the concern, but you are not required to do so before exercising your right to complain.</p>
 
-      <h2>17. Third-Party Websites and Services</h2>
-      <p>
-        17.1 The Website may contain links to third-party websites, including Steam, payment pages, social
-        media pages, or other external services.
-      </p>
-      <p>
-        17.2 We are not responsible for the privacy practices, security, content, or policies of third-party
-        websites or services.
-      </p>
-      <p>
-        17.3 You should review the privacy policies of any third-party website or service before providing
-        personal data to them.
-      </p>
+      <h2>17. Cookies and Similar Technologies</h2>
+      <p>UltraSensSkin may use strictly necessary cookies or similar storage technologies for:</p>
+      <ul>
+        <li>Steam Login;</li>
+        <li>authentication and Account sessions;</li>
+        <li>checkout continuity;</li>
+        <li>security and fraud prevention;</li>
+        <li>load balancing;</li>
+        <li>storing the selected currency;</li>
+        <li>remembering privacy choices; and</li>
+        <li>maintaining essential website functionality.</li>
+      </ul>
+      <p>Strictly necessary technologies are used because the Service cannot operate securely without them.</p>
+      <p>At the date of publication, UltraSensSkin does not use:</p>
+      <ul>
+        <li>third-party advertising cookies;</li>
+        <li>behavioural advertising technologies;</li>
+        <li>marketing pixels; or</li>
+        <li>third-party analytics cookies.</li>
+      </ul>
+      <p>Further information is provided in the Cookie Policy.</p>
+      <p>If non-essential technologies are introduced, they will not be activated before any consent required by applicable law has been obtained.</p>
 
-      <h2>18. Children&rsquo;s Privacy</h2>
-      <p>18.1 The Website is not directed at children.</p>
-      <p>18.2 We do not knowingly collect personal data from children.</p>
-      <p>
-        18.3 If you believe that a child has provided personal data to us, please contact us at
-        info@ultrasensskin.com and we will take appropriate steps to review and delete the information where
-        required.
-      </p>
+      <h2>18. Data Security</h2>
+      <p>We use reasonable technical and organisational measures designed to protect personal data against:</p>
+      <ul>
+        <li>unauthorised access;</li>
+        <li>accidental or unlawful loss;</li>
+        <li>alteration;</li>
+        <li>disclosure;</li>
+        <li>destruction; and</li>
+        <li>misuse.</li>
+      </ul>
+      <p>Measures may include:</p>
+      <ul>
+        <li>encrypted transmission;</li>
+        <li>access controls;</li>
+        <li>authentication controls;</li>
+        <li>logging and monitoring;</li>
+        <li>separation of payment information;</li>
+        <li>data minimisation;</li>
+        <li>provider confidentiality obligations;</li>
+        <li>backups;</li>
+        <li>incident response procedures; and</li>
+        <li>periodic security review.</li>
+      </ul>
+      <p>No internet or electronic storage system can be guaranteed to be completely secure. You are responsible for protecting your Steam Account, email account, devices and authentication credentials.</p>
+      <p>If you believe your Account or personal data has been compromised, contact us immediately.</p>
 
-      <h2>19. Changes to This Privacy Policy</h2>
-      <p>
-        19.1 We may update this Privacy Policy from time to time to reflect changes in our business, Website
-        functionality, service providers, data processing practices, legal requirements, or regulatory
-        guidance.
-      </p>
-      <p>
-        19.2 When we update this Privacy Policy, we will revise the &ldquo;Last updated&rdquo; date at the
-        top of the page.
-      </p>
-      <p>
-        19.3 The updated version will apply from the date it is published on the Website, unless stated
-        otherwise.
-      </p>
-      <p>
-        19.4 We recommend that you review this Privacy Policy periodically to stay informed about how we
-        handle personal data.
-      </p>
+      <h2>19. Personal Data Breaches</h2>
+      <p>If a personal data breach occurs, we will investigate and take reasonable containment and remediation measures.</p>
+      <p>Where required by applicable law, we will notify:</p>
+      <ul>
+        <li>the competent supervisory authority; and</li>
+        <li>affected individuals where the breach is likely to result in a high risk to their rights and freedoms.</li>
+      </ul>
+      <p>Notifications may describe the nature of the incident, likely consequences, measures taken and steps users should consider.</p>
 
-      <h2>20. Contact Information</h2>
-      <p>
-        If you have any questions, requests, or concerns about this Privacy Policy or how we process
-        personal data, please contact us:
-      </p>
+      <h2>20. Third-Party Links</h2>
+      <p>The Service may contain links to Steam or other third-party websites.</p>
+      <p>We are not responsible for the privacy practices of independent third parties. You should review their privacy documentation before providing personal data through their services.</p>
+      <p>The presence of a link does not mean that ULTRASENS controls or endorses the third party&rsquo;s data processing.</p>
+
+      <h2>21. Changes to This Privacy Policy</h2>
+      <p>We may update this Privacy Policy to reflect:</p>
+      <ul>
+        <li>changes to the Service;</li>
+        <li>new legal requirements;</li>
+        <li>changes to Steam or payment functionality;</li>
+        <li>security developments;</li>
+        <li>new categories of service providers; or</li>
+        <li>changes to our processing practices.</li>
+      </ul>
+      <p>The updated Policy will be published on ultrasensskin.com with a revised effective date.</p>
+      <p>Where a change materially affects your rights or the way we use personal data, we will provide additional notice where required.</p>
+
+      <h2>22. Contact</h2>
+      <p>Questions, complaints and data protection requests may be sent to:</p>
       <ContactBlock />
     </PolicyLayout>
   );

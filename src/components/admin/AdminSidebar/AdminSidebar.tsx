@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import {
   LayoutDashboard, Package, ShoppingCart, Users, FolderTree,
   Upload, BarChart3, Rss, FileText, Settings, Star, Image,
-  LogOut, Store, Home,
+  LogOut, Store, Home, ShoppingBag,
 } from "lucide-react";
 import { useAuth } from "@/providers/AuthProvider";
 
@@ -18,6 +18,7 @@ const navItems = [
   { href: "/admin/import", icon: Upload, label: "Import" },
   { section: "Sales" },
   { href: "/admin/orders", icon: ShoppingCart, label: "Orders" },
+  { href: "/admin/sih", icon: ShoppingBag, label: "SIH orders" },
   { href: "/admin/customers", icon: Users, label: "Customers" },
   { href: "/admin/users", icon: Users, label: "Users" },
   { href: "/admin/reviews", icon: Star, label: "Reviews" },

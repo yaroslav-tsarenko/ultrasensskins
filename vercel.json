@@ -1,0 +1,9 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "crons": [
+    { "path": "/api/cron/sih-sync", "schedule": "*/2 * * * *" },
+    { "path": "/api/cron/sih-poll", "schedule": "* * * * *" },
+    { "path": "/api/cron/sih-monitor", "schedule": "0 * * * *" },
+    { "path": "/api/cron/sih-reconcile", "schedule": "0 3 * * *" }
+  ]
+}

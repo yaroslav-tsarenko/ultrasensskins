@@ -5,9 +5,15 @@ const OPENID_NS = "http://specs.openid.net/auth/2.0";
 const IDENTIFIER_SELECT = "http://specs.openid.net/auth/2.0/identifier_select";
 
 export function getBaseUrl(): string {
+  // Prefer the canonical, user-facing domain. VERCEL_URL is a per-deploy preview
+  // hash (e.g. tradelock-abc123.vercel.app) and must never surface to users on
+  // the Steam login screen or the post-auth redirect — fall back to it last.
+  const prodDomain = process.env.VERCEL_PROJECT_PRODUCTION_URL;
   return (
     process.env.APP_URL ||
     process.env.NEXT_PUBLIC_APP_URL ||
+    process.env.NEXT_PUBLIC_SITE_URL ||
+    (prodDomain ? `https://${prodDomain}` : "") ||
     (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "") ||
     "http://localhost:3000"
   ).replace(/\/$/, "");

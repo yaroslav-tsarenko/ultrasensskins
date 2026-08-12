@@ -66,7 +66,7 @@ function SearchView() {
       ) : results.length > 0 ? (
         <ProductGrid products={results} />
       ) : query.length >= 2 ? (
-        <EmptyState title={t("noResults")} actionLabel={nav("catalog")} actionHref="/catalog" />
+        <EmptyState title={t("noResults")} actionLabel={nav("catalog")} actionHref="/store" />
       ) : null}
     </div>
   );

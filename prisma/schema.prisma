@@ -33,7 +33,7 @@ model User {
 
   steamAccount SteamAccount?
   sessions     Session[]
-  purchases    SkinPurchase[]
+  sihOrders    SihOrder[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -499,136 +499,123 @@ model FeedConfig {
   updatedAt     DateTime  @updatedAt
 }
 
-// ── CS2 Skins Marketplace ────────────────────────
-
-// A skin *definition* — one row per weapon+paint (e.g. "AWP | Dragon Lore").
-// market_hash_name variants (exterior / StatTrak) live on SkinListing.
-model Skin {
-  id          String  @id @default(cuid())
-  // Stable key from the source catalog (bymykel id, e.g. "skin-1")
-  externalId  String  @unique
-  name        String // "AWP | Dragon Lore"
-  weapon      String // "AWP"
-  category    String // "Rifle" | "Pistol" | "Knife" | "Gloves" | "SMG" ...
-  pattern     String? // paint/finish name, e.g. "Dragon Lore"
-  rarity      String // "Consumer Grade" ... "Covert" ... "Contraband"
-  rarityColor String // hex, from source
-  collection  String?
-  minFloat    Float   @default(0)
-  maxFloat    Float   @default(1)
-  imageUrl    String?
-  hasStatTrak Boolean @default(false)
-  hasSouvenir Boolean @default(false)
-  isKnife     Boolean @default(false)
-  isGloves    Boolean @default(false)
-  // Doppler phases etc.
-  phases      Json?
-
-  // Denormalized market summary for fast catalog sorting/filtering
-  lowestPrice  Decimal? @db.Decimal(12, 2)
-  listingCount Int      @default(0)
-
-  listings     SkinListing[]
-  priceHistory PriceHistory[]
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  @@index([weapon])
-  @@index([category])
-  @@index([rarity])
-  @@index([lowestPrice])
-  @@index([name])
-}
-
-enum Exterior {
-  FN // Factory New
-  MW // Minimal Wear
-  FT // Field-Tested
-  WW // Well-Worn
-  BS // Battle-Scarred
-  NA // vanilla / no exterior
-}
-
-// A concrete sellable offer for a specific exterior/float/seed.
-model SkinListing {
-  id             String   @id @default(cuid())
-  skinId         String
-  skin           Skin     @relation(fields: [skinId], references: [id], onDelete: Cascade)
-  marketHashName String // "AWP | Dragon Lore (Factory New)" or StatTrak™ variant
-  exterior       Exterior @default(NA)
-  isStatTrak     Boolean  @default(false)
-  isSouvenir     Boolean  @default(false)
-  float          Float?
-  paintSeed      Int?
+// ── SIH Skin Provider ────────────────────────────
+// Real, purchasable CS2 inventory synced from api.sih.market. This is the
+// source of truth for what can actually be bought. One row per
+// market_hash_name.
+model SihItem {
+  marketHashName String  @id @map("market_hash_name")
+  appId          Int     @default(730) @map("app_id")
+  // costPrice = live SIH `price` (what we pay the supplier)
+  costPrice      Decimal @map("cost_price") @db.Decimal(12, 4)
+  // sellPrice = storefront price = max(cost*(1+margin), cost+minMarginAbs)
+  sellPrice      Decimal @map("sell_price") @db.Decimal(12, 4)
+  steamPrice     Decimal? @map("steam_price") @db.Decimal(12, 4)
+  count          Int      @default(0)
   phase          String?
-  stickers       Json?
-  inspectLink    String?
-  imageUrl       String?
+  market         String?
+  imageHash      String?  @map("image_hash")
+  rarityColor    String?  @map("rarity_color")
+  isAvailable    Boolean  @default(true) @map("is_available")
 
-  price      Decimal  @db.Decimal(12, 2)
-  currency   String   @default("USD")
-  steamPrice Decimal? @db.Decimal(12, 2)
-  // % below Steam reference price (positive = cheaper than Steam)
-  discountPct Float?
-  market      String   @default("dropskin") // source marketplace
-  status      String   @default("available") // available | reserved | sold
+  // Derived from market_hash_name at sync time for fast catalog filtering.
+  weapon     String?
+  skinName   String? @map("skin_name")
+  category   String? @default("Other")
+  exterior   String? @default("NA")
+  rarity     String?
+  isStatTrak Boolean @default(false) @map("is_stattrak")
+  isSouvenir Boolean @default(false) @map("is_souvenir")
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  syncedAt  DateTime @default(now()) @map("synced_at")
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
-  purchase SkinPurchase?
+  orders SihOrder[]
 
-  @@index([skinId])
-  @@index([exterior])
-  @@index([price])
-  @@index([float])
+  @@index([isAvailable, costPrice])
+  @@index([isAvailable, category])
+  @@index([isAvailable, weapon])
+  @@index([appId])
+  @@index([marketHashName])
+  @@map("sih_items")
+}
+
+// A real-money purchase. The order id doubles as SIH customId.
+model SihOrder {
+  id             String         @id @default(uuid())
+  userId         String         @map("user_id")
+  user           User           @relation(fields: [userId], references: [id])
+  marketHashName String         @map("market_hash_name")
+  item           SihItem        @relation(fields: [marketHashName], references: [marketHashName])
+
+  // Money
+  shownPrice Decimal @map("shown_price") @db.Decimal(12, 4) // what the user pays
+  costPrice  Decimal @map("cost_price") @db.Decimal(12, 4)  // what we pay SIH
+  margin     Decimal @db.Decimal(12, 4)
+  currency   String  @default("USD")
+
+  status    SihOrderStatus @default(awaiting_payment)
+  sihOrderId String?       @map("sih_order_id")
+  sihStatus  String?       @map("sih_status")
+  sihError   String?       @map("sih_error")
+
+  // Steam delivery target (copied from SteamAccount at purchase time)
+  steamId    String  @map("steam_id")
+  tradeToken String  @map("trade_token")
+
+  // sender.* from SIH order object (trade offer being sent to the buyer)
+  senderOfferId  String?   @map("sender_offer_id")
+  senderNickname String?   @map("sender_nickname")
+  senderAvatar   String?   @map("sender_avatar")
+  senderTimeout  DateTime? @map("sender_timeout")
+
+  // protection.* from SIH order object
+  protectionStatus         String?   @map("protection_status")
+  protectionError          String?   @map("protection_error")
+  protectionRollbackAt     DateTime? @map("protection_rollback_at")
+  protectionRollbackAmount Decimal?  @map("protection_rollback_amount") @db.Decimal(12, 4)
+
+  paymentProviderId String?   @unique @map("payment_provider_id")
+  paidAt            DateTime? @map("paid_at")
+  submittedAt       DateTime? @map("submitted_at")
+  finishedAt        DateTime? @map("finished_at")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  events SihOrderEvent[]
+
+  @@index([userId, createdAt(sort: Desc)])
   @@index([status])
-  @@index([isStatTrak])
+  @@index([sihOrderId])
+  @@map("sih_orders")
 }
 
-// Time series of reference prices per skin+market for charts.
-model PriceHistory {
-  id        String   @id @default(cuid())
-  skinId    String
-  skin      Skin     @relation(fields: [skinId], references: [id], onDelete: Cascade)
-  market    String   @default("steam")
-  price     Decimal  @db.Decimal(12, 2)
-  volume    Int      @default(0)
-  recordedAt DateTime
-
-  @@index([skinId, recordedAt])
-  @@index([skinId, market, recordedAt])
+enum SihOrderStatus {
+  awaiting_payment
+  paid
+  submitted
+  processing
+  sent
+  finished
+  failed
+  refund_pending
+  refunded
+  rolled_back
 }
 
-model SkinPurchase {
-  id        String      @id @default(cuid())
-  listingId String      @unique
-  listing   SkinListing @relation(fields: [listingId], references: [id])
-  userId    String
-  user      User        @relation(fields: [userId], references: [id])
-  price     Decimal     @db.Decimal(12, 2)
-  currency  String      @default("USD")
-  status    String      @default("pending") // pending | trade_sent | completed | failed
-  tradeUrl  String?
-  createdAt DateTime    @default(now())
-  updatedAt DateTime    @updatedAt
+// Append-only audit trail — every status change for every order.
+model SihOrderEvent {
+  id         String   @id @default(cuid())
+  orderId    String   @map("order_id")
+  order      SihOrder @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  source     String // sih_webhook | sih_poll | payment | system
+  fromStatus String?  @map("from_status")
+  toStatus   String?  @map("to_status")
+  payload    Json?
+  createdAt  DateTime @default(now()) @map("created_at")
 
-  @@index([userId])
-}
-
-// Idempotent catalog import run log.
-model SkinImportRun {
-  id          String    @id @default(cuid())
-  source      String    @default("bymykel")
-  status      String    @default("running") // running | completed | failed
-  dryRun      Boolean   @default(false)
-  totalItems  Int       @default(0)
-  created     Int       @default(0)
-  updated     Int       @default(0)
-  skipped     Int       @default(0)
-  errorsCount Int       @default(0)
-  errorLog    Json?
-  startedAt   DateTime  @default(now())
-  finishedAt  DateTime?
+  @@index([orderId, createdAt])
+  @@map("sih_order_events")
 }

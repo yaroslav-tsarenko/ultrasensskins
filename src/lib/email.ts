@@ -134,7 +134,7 @@ export async function sendWelcomeEmail(email: string, name?: string | null): Pro
       `
       <h1 style="margin:0 0 16px;font-size:22px;font-weight:800;color:${TEXT_COLOR};">${greeting}, welcome to UltraSensSkin!</h1>
       <p style="color:${MUTED_COLOR};line-height:1.6;margin:0 0 16px;">
-        Your account is ready. Link your Steam account and start buying and selling CS2 skins with instant, secure delivery.
+        Your account is ready. Link your Steam account and start buying CS2 skins with instant, secure delivery.
       </p>
       <div style="background:#f9f9f9;border-radius:8px;padding:16px;margin:0 0 24px;">
         <p style="margin:0 0 8px;font-weight:600;color:${TEXT_COLOR};">What you can do now:</p>
@@ -142,10 +142,10 @@ export async function sendWelcomeEmail(email: string, name?: string | null): Pro
           <li>Browse the market for the skins you want</li>
           <li>Link your Steam account and add your trade URL</li>
           <li>Buy skins delivered to your inventory in seconds</li>
-          <li>Track every purchase under My Trades</li>
+          <li>Track every purchase under My Purchases</li>
         </ul>
       </div>
-      ${button(`${siteUrl}/catalog`, "Browse the Market")}
+      ${button(`${siteUrl}/store`, "Browse the Market")}
       <p style="color:#999;font-size:13px;margin:24px 0 0;text-align:center;">
         Buyer protection on every trade
       </p>
@@ -487,7 +487,7 @@ export async function sendOrderStatusEmail(
       iconColor: "#C62828",
       message: "This order has been cancelled. If you were charged, a refund will be processed back to your original payment method within 5–10 business days.",
       cta: "Continue shopping",
-      ctaHref: `${siteUrl}/catalog`,
+      ctaHref: `${siteUrl}/store`,
     },
     REFUNDED: {
       subject: `Order #${id} refunded`,
@@ -616,7 +616,7 @@ export async function sendContactAutoReplyEmail(submission: ContactSubmission): 
         <p style="margin:0;font-size:14px;color:${MUTED_COLOR};line-height:1.6;white-space:pre-wrap;">${escape(submission.message)}</p>
       </div>
       <p style="color:#999;font-size:13px;margin:16px 0 0;">
-        In the meantime, you can check our <a href="${getSiteUrl()}/faq" style="color:${BRAND_COLOR};">FAQ</a> or browse our <a href="${getSiteUrl()}/catalog" style="color:${BRAND_COLOR};">catalog</a>.
+        In the meantime, you can check our <a href="${getSiteUrl()}/faq" style="color:${BRAND_COLOR};">FAQ</a> or browse our <a href="${getSiteUrl()}/store" style="color:${BRAND_COLOR};">store</a>.
       </p>
     `,
       { preheader: "Thanks for your message — we'll reply within 24 hours." },

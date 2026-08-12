@@ -5,17 +5,16 @@ import { brand } from "@/lib/brand";
 import {
   ArrowRight,
   Search,
-  Wallet,
+  CreditCard,
   PackageCheck,
   ShieldCheck,
   Link2,
-  Repeat,
   Clock,
 } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "How It Works",
-  description: `How buying and selling CS2 skins works on ${brand.displayName} — link Steam, pay from balance, receive your skin in seconds.`,
+  description: `How buying CS2 skins works on ${brand.displayName} — find your skin, pay securely by card, receive it in seconds.`,
 };
 
 const steps = [
@@ -25,32 +24,14 @@ const steps = [
     body: "Browse the catalogue with live float, pattern index and cross-market pricing. Filter by weapon, wear, rarity and price to land on exactly what you want.",
   },
   {
-    Icon: Wallet,
-    title: "Pay from balance",
-    body: "Top up your UltraSensSkin wallet and buy in a click. Your funds are only captured once the trade offer is confirmed — so every purchase is protected.",
+    Icon: CreditCard,
+    title: "Pay securely",
+    body: "Check out and pay by Visa or Mastercard. Your order is confirmed the moment payment clears — no wallet top-ups, no stored balance.",
   },
   {
     Icon: PackageCheck,
     title: "Receive in seconds",
     body: "Our bot sends a Steam trade offer the moment payment clears. Accept it and the skin lands in your inventory — usually within seconds.",
-  },
-];
-
-const sellSteps = [
-  {
-    Icon: Link2,
-    title: "Link your Steam",
-    body: "Connect your Steam account and add your trade URL so our bot can send and receive offers securely.",
-  },
-  {
-    Icon: Repeat,
-    title: "List for balance",
-    body: "Pick the skins you want to sell and set your price. Once a buyer purchases, our bot handles the trade automatically.",
-  },
-  {
-    Icon: Wallet,
-    title: "Get paid instantly",
-    body: "The sale value lands in your UltraSensSkin balance the moment the trade completes — ready to spend or withdraw.",
   },
 ];
 
@@ -63,7 +44,7 @@ const faqs = [
   {
     Icon: ShieldCheck,
     q: "Is my purchase protected?",
-    a: "Yes. Funds are only captured on a confirmed trade offer, and every purchase is covered by buyer protection end to end.",
+    a: "Yes. Your card payment is processed securely, and every purchase is covered by buyer protection end to end.",
   },
   {
     Icon: Link2,
@@ -109,30 +90,6 @@ export default function HowItWorksPage() {
         ))}
       </section>
 
-      {/* Selling */}
-      <section className="mt-12">
-        <div className="mb-6 text-center">
-          <span className="eyebrow">Selling skins</span>
-          <h2 className="mt-2 font-serif text-2xl font-medium tracking-tight text-[color:var(--color-text)] sm:text-3xl">
-            Turn your inventory into balance
-          </h2>
-        </div>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-          {sellSteps.map(({ Icon, title, body }) => (
-            <div
-              key={title}
-              className="rounded-2xl border border-[color:var(--color-line)] bg-[color:var(--color-bg-elevated)] p-6"
-            >
-              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[color:var(--color-accent-tint)] text-[color:var(--color-accent)]">
-                <Icon size={22} strokeWidth={1.5} />
-              </div>
-              <h3 className="mb-2 text-lg font-semibold text-[color:var(--color-text)]">{title}</h3>
-              <p className="text-sm leading-relaxed text-[color:var(--color-text-secondary)]">{body}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* Quick answers */}
       <section className="mt-12">
         <div className="mb-6 text-center">
@@ -168,17 +125,17 @@ export default function HowItWorksPage() {
       {/* CTA */}
       <section className="mt-12 overflow-hidden rounded-3xl bg-[color:var(--color-primary)] px-6 py-12 text-center text-[color:var(--color-primary-fg)] sm:px-10">
         <h2 className="mx-auto max-w-xl font-serif text-2xl font-medium tracking-tight sm:text-3xl">
-          Start trading in minutes
+          Start buying in minutes
         </h2>
         <p className="mx-auto mt-3 max-w-md text-sm opacity-90 sm:text-base">
           Sign up with email, link Steam at checkout, and get your skin in
           seconds.
         </p>
         <Link
-          href="/catalog"
-          className="mt-6 inline-flex items-center gap-2 rounded-full bg-[color:var(--color-primary-fg)] px-6 py-3 text-sm font-bold text-[color:var(--color-primary)] transition-transform hover:scale-[1.02]"
+          href="/store"
+          className="mt-6 inline-flex items-center gap-2 rounded-full bg-[color:var(--color-bg)] px-6 py-3 text-sm font-bold text-[color:var(--color-text)] transition-transform hover:scale-[1.02]"
         >
-          Browse the market <ArrowRight size={15} />
+          Browse the store <ArrowRight size={15} />
         </Link>
       </section>
     </div>

@@ -1,5 +1,7 @@
 import type { MetadataRoute } from "next";
 import { prisma } from "@/lib/prisma";
+import { env } from "@/lib/env";
+import { encodeSihSlug } from "@/lib/sih/queries";
 import { brand } from "@/lib/brand";
 
 export const dynamic = "force-dynamic";
@@ -10,11 +12,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const staticPages: MetadataRoute.Sitemap = [
     { url: `${siteUrl}/`, lastModified: now, changeFrequency: "daily", priority: 1 },
-    { url: `${siteUrl}/catalog`, lastModified: now, changeFrequency: "hourly", priority: 0.9 },
-    { url: `${siteUrl}/analytics`, lastModified: now, changeFrequency: "daily", priority: 0.8 },
-    { url: `${siteUrl}/sell`, lastModified: now, changeFrequency: "weekly", priority: 0.7 },
-    { url: `${siteUrl}/compare`, lastModified: now, changeFrequency: "weekly", priority: 0.6 },
-    { url: `${siteUrl}/loadout`, lastModified: now, changeFrequency: "weekly", priority: 0.6 },
+    { url: `${siteUrl}/store`, lastModified: now, changeFrequency: "hourly", priority: 0.9 },
     { url: `${siteUrl}/how-it-works`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     { url: `${siteUrl}/faq`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
     { url: `${siteUrl}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.5 },
@@ -28,11 +26,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
 
   const [skins, pages] = await Promise.all([
-    prisma.skin
+    prisma.sihItem
       .findMany({
-        where: { listingCount: { gt: 0 } },
-        select: { id: true, imageUrl: true, updatedAt: true },
-        orderBy: { lowestPrice: "desc" },
+        where: { isAvailable: true, count: { gt: 0 }, appId: env.SIH_APP_ID },
+        select: { marketHashName: true, updatedAt: true },
+        orderBy: { sellPrice: "desc" },
         take: 10000,
       })
       .catch(() => []),
@@ -45,11 +43,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ]);
 
   const skinPages: MetadataRoute.Sitemap = skins.map((s) => ({
-    url: `${siteUrl}/skin/${s.id}`,
+    url: `${siteUrl}/store/${encodeSihSlug(s.marketHashName)}`,
     lastModified: s.updatedAt,
     changeFrequency: "daily",
     priority: 0.7,
-    images: s.imageUrl ? [s.imageUrl] : undefined,
   }));
 
   const cmsPages: MetadataRoute.Sitemap = pages.map((p) => ({

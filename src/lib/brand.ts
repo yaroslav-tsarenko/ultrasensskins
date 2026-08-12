@@ -32,7 +32,7 @@ export const brand = {
   url: "https://www.ultrasensskin.com",
   tagline: "Own the rarest CS2 skins.",
   description:
-    "UltraSensSkin — a premium marketplace for rare CS2 skins. Browse a curated showroom of knives, gloves and covert-grade finishes with verified float, pattern and price data, compare against Steam, track price history, and trade instantly and securely via your Steam account.",
+    "UltraSensSkin — a premium store for rare CS2 skins. Browse a curated showroom of knives, gloves and covert-grade finishes with verified float, pattern and price data, compare against Steam, track price history, and trade instantly and securely via your Steam account.",
   applicationName: "UltraSensSkin",
 
   company,

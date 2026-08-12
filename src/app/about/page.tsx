@@ -15,7 +15,7 @@ import {
 
 export const metadata: Metadata = {
   title: "About Us",
-  description: `Learn about ${brand.displayName} — a modern CS2 skins marketplace built for fast, fair, transparent trading.`,
+  description: `Learn about ${brand.displayName} — a modern CS2 skins store built for fast, fair, transparent trading.`,
 };
 
 const stats = [
@@ -34,7 +34,7 @@ const values = [
   {
     Icon: ShieldCheck,
     title: "Fair & protected",
-    body: "Funds are only captured once a trade offer is confirmed. Every purchase is covered by buyer protection, end to end.",
+    body: "Pay securely by card at checkout. Every purchase is covered by buyer protection, end to end.",
   },
   {
     Icon: BarChart3,
@@ -43,8 +43,8 @@ const values = [
   },
   {
     Icon: Repeat,
-    title: "Built for traders",
-    body: "Buy for balance, sell back in a click, and track every trade with a live delivery status. No dead ends.",
+    title: "Built for collectors",
+    body: "Buy in a click and track every order with a live delivery status. No dead ends.",
   },
 ];
 
@@ -65,7 +65,7 @@ export default function AboutPage() {
         </p>
         <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
           <Link
-            href="/catalog"
+            href="/store"
             className="inline-flex items-center gap-2 rounded-full bg-[color:var(--color-primary)] px-5 py-3 text-sm font-bold text-[color:var(--color-primary-fg)] transition-all hover:bg-[color:var(--color-primary-hover)]"
           >
             Browse the market <ArrowRight size={15} />
@@ -106,15 +106,15 @@ export default function AboutPage() {
           </h2>
           <div className="flex flex-col gap-4 text-[15px] leading-relaxed text-[color:var(--color-text-secondary)]">
             <p>
-              We started {brand.displayName} because buying and selling CS2 skins
+              We started {brand.displayName} because buying CS2 skins
               was needlessly opaque — hidden fees, unclear float, slow deliveries
               and the constant worry of getting scammed on peer-to-peer trades.
             </p>
             <p>
-              So we built a marketplace around three ideas: show everything, move
-              instantly, and protect every trade. Prices, float and pattern are on
+              So we built a store around three ideas: show everything, move
+              instantly, and protect every purchase. Prices, float and pattern are on
               the table before you commit. Our bot handles delivery automatically.
-              And your balance is only ever spent on a confirmed trade.
+              And you pay securely by card only when you place an order.
             </p>
           </div>
         </div>
@@ -204,10 +204,10 @@ export default function AboutPage() {
           to trade instantly.
         </p>
         <Link
-          href="/catalog"
-          className="mt-6 inline-flex items-center gap-2 rounded-full bg-[color:var(--color-primary-fg)] px-6 py-3 text-sm font-bold text-[color:var(--color-primary)] transition-transform hover:scale-[1.02]"
+          href="/store"
+          className="mt-6 inline-flex items-center gap-2 rounded-full bg-[color:var(--color-bg)] px-6 py-3 text-sm font-bold text-[color:var(--color-text)] transition-transform hover:scale-[1.02]"
         >
-          Explore the market <ArrowRight size={15} />
+          Explore the store <ArrowRight size={15} />
         </Link>
       </section>
     </div>

@@ -14,25 +14,28 @@ import {
   Globe,
   LayoutGrid,
   Tag,
-  BarChart3,
   HelpCircle,
   MessageSquare,
   ChevronDown,
   Info,
   Route,
   Gem,
-  Swords,
-  Grab,
   Sparkles,
-  Scale,
-  Layers,
-  Heart,
-  Clock,
   TrendingUp,
 } from "lucide-react";
+import Image from "next/image";
 import { UltraSensLogo } from "../DropskinLogo";
 import { brand, brandAddressLine } from "@/lib/brand";
 import { useCurrency } from "@/providers/CurrencyProvider";
+import visaLogo from "@/assets/visa-logo.svg";
+import mastercardLogo from "@/assets/mastercard-logo.svg";
+import pciDssLogo from "@/assets/pci-dss-compliant-logo-vector.svg";
+
+const paymentBadges = [
+  { src: visaLogo, label: "Visa", pad: "px-3 py-2.5" },
+  { src: mastercardLogo, label: "Mastercard", pad: "px-3 py-2.5" },
+  { src: pciDssLogo, label: "PCI DSS Compliant", pad: "px-2 py-1.5" },
+];
 
 interface Group {
   key: string;
@@ -42,33 +45,23 @@ interface Group {
 
 const groups: Group[] = [
   {
-    key: "marketplace",
-    title: "Marketplace",
+    key: "store",
+    title: "Store",
     items: [
-      { href: "/catalog", label: "Browse skins", Icon: LayoutGrid },
-      { href: "/catalog?sort=newest", label: "Trending", Icon: TrendingUp },
-      { href: "/sell", label: "Sell skins", Icon: Tag },
-      { href: "/analytics", label: "Price analytics", Icon: BarChart3 },
+      { href: "/store", label: "Browse skins", Icon: LayoutGrid },
+      { href: "/store?sort=newest", label: "New arrivals", Icon: TrendingUp },
+      { href: "/store?sort=price_asc", label: "Best value", Icon: Gem },
+      { href: "/my-purchases", label: "My purchases", Icon: Tag },
     ],
   },
   {
     key: "collections",
-    title: "Collections",
+    title: "By rarity",
     items: [
-      { href: "/catalog?category=Knives", label: "Knives", Icon: Swords },
-      { href: "/catalog?category=Gloves", label: "Gloves", Icon: Grab },
-      { href: "/catalog?rarity=Covert", label: "Rare items", Icon: Sparkles },
-      { href: "/catalog?sort=discount", label: "Deals", Icon: Gem },
-    ],
-  },
-  {
-    key: "tools",
-    title: "Tools",
-    items: [
-      { href: "/compare", label: "Compare skins", Icon: Scale },
-      { href: "/loadout", label: "Loadout creator", Icon: Layers },
-      { href: "/favorites", label: "Favorites", Icon: Heart },
-      { href: "/favorites?tab=recent", label: "Recently viewed", Icon: Clock },
+      { href: "/store?rarity=Covert", label: "Covert", Icon: Sparkles },
+      { href: "/store?rarity=Classified", label: "Classified", Icon: Gem },
+      { href: "/store?rarity=Extraordinary", label: "Extraordinary", Icon: Sparkles },
+      { href: "/store?rarity=Contraband", label: "Contraband", Icon: Gem },
     ],
   },
   {
@@ -84,9 +77,9 @@ const groups: Group[] = [
 ];
 
 const trustBadges = [
-  { icon: Zap, label: "Instant Steam trades" },
+  { icon: Zap, label: "Instant Steam delivery" },
   { icon: ShieldCheck, label: "Buyer protection" },
-  { icon: Repeat, label: "Sell for balance" },
+  { icon: Repeat, label: "Secure card checkout" },
 ];
 
 const socialLinks = [
@@ -288,10 +281,10 @@ export function Footer() {
             </a>
 
             <Link
-              href="/catalog"
+              href="/store"
               className="mt-1 inline-flex w-fit items-center gap-2 rounded-full bg-[color:var(--color-primary)] px-4 py-2.5 text-[12.5px] font-bold text-[color:var(--color-primary-fg)] shadow-[0_8px_24px_-8px_var(--color-primary-glow)] transition-all hover:bg-[color:var(--color-primary-hover)]"
             >
-              Browse the market <ArrowRight size={12} />
+              Browse the store <ArrowRight size={12} />
             </Link>
           </div>
 
@@ -322,6 +315,17 @@ export function Footer() {
           </div>
 
           <div className="flex flex-col gap-2 md:items-end">
+            <div className="flex flex-wrap items-center gap-2.5">
+              {paymentBadges.map(({ src, label, pad }) => (
+                <span
+                  key={label}
+                  title={label}
+                  className={`relative inline-flex h-8 w-14 items-center justify-center rounded-md border border-[color:var(--color-border)] bg-white ${pad}`}
+                >
+                  <Image src={src} alt={label} fill sizes="56px" className="object-contain" />
+                </span>
+              ))}
+            </div>
             <div className="inline-flex items-center gap-2 rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-bg-elevated)] px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-[color:var(--color-text)]/85">
               <Globe size={11} className="text-[color:var(--color-primary)]" />
               <span>{currency} {symbol}</span>

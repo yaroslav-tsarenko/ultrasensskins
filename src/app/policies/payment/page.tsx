@@ -4,50 +4,46 @@ export const metadata = { title: "Payment Policy — UltraSensSkin" };
 
 export default function PaymentPolicyPage() {
   return (
-    <PolicyLayout title="Payment Policy" lastUpdated="29 May 2026">
+    <PolicyLayout title="Payment Policy" lastUpdated="9 August 2026">
       <p>
-        This Payment Policy explains how payments and wallet funds are accepted, processed, verified, and
-        refunded for purchases of CS2 in-game items (&ldquo;skins&rdquo;) made through www.ultrasensskin.com.
+        This Payment Policy explains how payments are accepted, processed, verified, and refunded for
+        purchases of CS2 in-game items (&ldquo;skins&rdquo;) made through www.ultrasensskin.com.
       </p>
       <p>The Website is operated by:</p>
       <ContactBlock />
       <p>
         In this Policy, &ldquo;UltraSensSkin&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo; or &ldquo;our&rdquo;
-        means ULTRASENS LT MB. &ldquo;Customer&rdquo;, &ldquo;you&rdquo; or &ldquo;your&rdquo; means any
+        means ULTRASENS LT, MB. &ldquo;Customer&rdquo;, &ldquo;you&rdquo; or &ldquo;your&rdquo; means any
         person placing an order through the Website.
       </p>
       <p>
-        This Payment Policy should be read together with our Terms and Conditions, Trade Delivery Policy,
-        Refunds and Cancellation Policy, and Privacy Policy.
+        This Payment Policy should be read together with our Terms and Conditions, Digital Item Delivery
+        Policy, Refund, Cancellation and Withdrawal Policy, and Privacy Policy.
       </p>
 
       <h2>1. Scope of This Policy</h2>
       <p>
-        1.1 This Policy applies to all payments made through the Website, including adding funds to your
-        UltraSensSkin wallet, purchasing skins, and any service fees displayed at checkout.
+        1.1 This Policy applies to all payments made through the Website, including purchasing skins and any
+        service fees displayed at checkout.
       </p>
       <p>
         1.2 UltraSensSkin sells digital in-game items for Counter-Strike 2 (CS2), delivered through the Steam
         trading system.
       </p>
-      <p>1.3 By adding funds or placing an order, you agree to this Payment Policy.</p>
+      <p>1.3 By placing an order, you agree to this Payment Policy.</p>
 
-      <h2>2. Wallet Balance</h2>
+      <h2>2. Payment at Checkout</h2>
       <p>
-        2.1 Purchases on UltraSensSkin are paid from your UltraSensSkin wallet balance. You add funds to your wallet
-        and then use that balance to buy skins.
+        2.1 Purchases on UltraSensSkin are paid for directly at checkout for the specific order you place. We
+        do not operate a wallet, stored balance, or prepaid credit system.
       </p>
       <p>
-        2.2 Your wallet balance represents a prepaid amount available to spend on the Website. It is not a
-        bank account and does not earn interest.
+        2.2 The amount payable is the order total shown at checkout, in the currency displayed, and is charged
+        to your chosen card payment method when you confirm the order.
       </p>
       <p>
-        2.3 When you buy a skin, the relevant amount is reserved from your balance and is only captured once
-        the trade offer is confirmed, so you are covered by buyer protection on every trade.
-      </p>
-      <p>
-        2.4 Where a purchase fails or is cancelled before delivery, the reserved amount is returned to your
-        wallet balance.
+        2.3 Where a purchase fails or is cancelled before delivery, any amount charged is returned to your
+        original payment method in accordance with our Refund, Cancellation and Withdrawal Policy.
       </p>
 
       <h2>3. Accepted Currencies</h2>
@@ -64,7 +60,8 @@ export default function PaymentPolicyPage() {
       <p>3.3 The final currency and amount payable will be shown before you complete your payment.</p>
       <p>
         3.4 If your card or bank account is held in a different currency, your card issuer or bank may apply
-        its own exchange rate, conversion fee, or foreign transaction fee, which UltraSensSkin does not control.
+        its own exchange rate, conversion fee, or foreign transaction fee, which UltraSensSkin does not
+        control.
       </p>
 
       <h2>4. Prices and Fees</h2>
@@ -82,7 +79,7 @@ export default function PaymentPolicyPage() {
       </p>
 
       <h2>5. Accepted Payment Methods</h2>
-      <p>5.1 To add funds to your wallet, UltraSensSkin accepts secure card payments using:</p>
+      <p>5.1 To pay for an order, UltraSensSkin accepts secure card payments using:</p>
       <ul>
         <li>Visa</li>
         <li>Mastercard</li>
@@ -91,7 +88,7 @@ export default function PaymentPolicyPage() {
         5.2 Other payment methods are not accepted unless expressly displayed at checkout or agreed by
         UltraSensSkin in writing.
       </p>
-      <p>5.3 Payment must be completed and funds available before an order is processed.</p>
+      <p>5.3 Payment must be completed successfully before an order is processed.</p>
 
       <h2>6. Payment Processing</h2>
       <p>6.1 Payments are processed by secure third-party payment providers.</p>
@@ -104,13 +101,13 @@ export default function PaymentPolicyPage() {
         issuer, bank, payment provider, fraud checks, authentication requirements, available funds, and
         other factors outside our control.
       </p>
-      <p>6.4 Your order will not be fulfilled until the required funds are available in your wallet.</p>
+      <p>6.4 Your order will not be fulfilled until payment has been completed successfully.</p>
 
       <h2>7. Card Security and Payment Data</h2>
       <p>7.1 UltraSensSkin takes payment security seriously.</p>
       <p>
-        7.2 Card payments are handled through secure third-party payment providers. UltraSensSkin does not store
-        your full card number, security code, or complete card credentials on its own systems.
+        7.2 Card payments are handled through secure third-party payment providers. UltraSensSkin does not
+        store your full card number, security code, or complete card credentials on its own systems.
       </p>
       <p>7.3 We may receive limited payment-related information from payment providers, such as:</p>
       <ul>
@@ -134,8 +131,8 @@ export default function PaymentPolicyPage() {
         or banking app approval required by your bank, card issuer, or payment provider.
       </p>
       <p>
-        8.2 If authentication is not completed successfully, the payment may be declined and funds may not be
-        added to your wallet.
+        8.2 If authentication is not completed successfully, the payment may be declined and your order may
+        not be processed.
       </p>
       <p>
         8.3 We may request additional information to verify billing details, account legitimacy, fraud risk,
@@ -144,8 +141,8 @@ export default function PaymentPolicyPage() {
 
       <h2>9. Failed, Declined, or Pending Payments</h2>
       <p>
-        9.1 If your payment is declined, fails, expires, is reversed, or remains pending, funds may not be
-        added to your wallet and your order may not be processed.
+        9.1 If your payment is declined, fails, expires, is reversed, or remains pending, your order may not
+        be processed.
       </p>
       <p>
         9.2 UltraSensSkin is not responsible for payment failures caused by your bank, card issuer, payment
@@ -160,14 +157,14 @@ export default function PaymentPolicyPage() {
         screened for fraud, abuse, unauthorised activity, sanctions risk, and payment security concerns.
       </p>
       <p>
-        10.2 We may delay, cancel, reject, or request additional verification for orders or wallet top-ups
-        that appear suspicious or high-risk.
+        10.2 We may delay, cancel, reject, or request additional verification for orders that appear
+        suspicious or high-risk.
       </p>
       <p>10.3 Examples of risk indicators may include:</p>
       <ul>
         <li>use of multiple failed payment attempts;</li>
         <li>suspected unauthorised card use;</li>
-        <li>unusual order value, frequency, or top-up amount;</li>
+        <li>unusual order value or frequency;</li>
         <li>restricted or sanctioned location;</li>
         <li>unusual IP, location, or device data;</li>
         <li>previous chargeback or fraud history;</li>
@@ -194,11 +191,9 @@ export default function PaymentPolicyPage() {
       </p>
 
       <h2>12. Refunds</h2>
-      <p>12.1 Refunds are handled in accordance with our Refunds and Cancellation Policy.</p>
+      <p>12.1 Refunds are handled in accordance with our Refund, Cancellation and Withdrawal Policy.</p>
       <p>
-        12.2 Refunds are normally credited to your UltraSensSkin wallet balance. Where a refund to your original
-        payment method is required by law or agreed with us, it will be processed to that method where
-        possible.
+        12.2 Where a refund is due, it is normally processed to your original payment method where possible.
       </p>
       <p>12.3 We cannot normally refund to a different card, account, or person.</p>
       <p>
@@ -226,8 +221,7 @@ export default function PaymentPolicyPage() {
       </p>
       <p>
         13.4 Fraudulent, abusive, or repeated chargebacks may result in cancellation of future orders,
-        forfeiture of wallet balance where lawful, restriction of account access, or further action where
-        permitted by law.
+        restriction of account access, or further action where permitted by law.
       </p>
 
       <h2>14. Sanctions, Restricted Payments, and Compliance</h2>
@@ -257,8 +251,8 @@ export default function PaymentPolicyPage() {
 
       <h2>16. Contact Information</h2>
       <p>
-        If you have any questions about payments, wallet funds, refunds, failed payments, or payment
-        disputes, please contact us:
+        If you have any questions about payments, refunds, failed payments, or payment disputes, please
+        contact us:
       </p>
       <ContactBlock />
     </PolicyLayout>

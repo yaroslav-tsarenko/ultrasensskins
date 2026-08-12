@@ -163,7 +163,7 @@ function ConfirmedContent() {
         <Button as={Link} href="/account/orders" variant="bordered" className="flex-1 basis-[200px]" endContent={<ChevronRight size={16} />}>
           View Orders
         </Button>
-        <Button as={Link} href="/catalog" color="primary" className="flex-1 basis-[200px]">
+        <Button as={Link} href="/store" color="primary" className="flex-1 basis-[200px]">
           Continue Shopping
         </Button>
       </motion.div>
