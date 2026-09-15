@@ -1,4 +1,5 @@
 import { PolicyLayout, ContactBlock } from "@/components/layout/PolicyLayout/PolicyLayout";
+import { brand, brandAddressLine } from "@/lib/brand";
 
 export const metadata = { title: "Refund, Cancellation and Withdrawal Policy — UltraSensSkin" };
 
@@ -15,7 +16,7 @@ export default function RefundsPolicyPage() {
       <ContactBlock />
       <p>
         In this Policy, &ldquo;UltraSensSkin&rdquo;, &ldquo;ULTRASENS&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;
-        and &ldquo;our&rdquo; refer to ULTRASENS LT, MB. &ldquo;You&rdquo; and &ldquo;your&rdquo; refer to the
+        and &ldquo;our&rdquo; refer to {brand.company.legalName}. &ldquo;You&rdquo; and &ldquo;your&rdquo; refer to the
         purchaser.
       </p>
 
@@ -87,7 +88,7 @@ export default function RefundsPolicyPage() {
         Because Digital Item delivery may begin immediately after payment, it may not always be possible to cancel
         an accepted Order before a Trade Offer is created or sent.
       </p>
-      <p>You may nevertheless request cancellation by contacting: info@ultrasensskin.com</p>
+      <p>You may nevertheless request cancellation by contacting: {brand.contact.email}</p>
       <p>The request must include your Order number and SteamID.</p>
       <p>
         If fulfilment has not begun and the Item has not been committed for transfer, we may cancel the Order and
@@ -279,7 +280,7 @@ export default function RefundsPolicyPage() {
       <ul>
         <li>contact your card issuer promptly;</li>
         <li>secure your Steam Account, email and devices;</li>
-        <li>notify us at info@ultrasensskin.com; and</li>
+        <li>notify us at {brand.contact.email}; and</li>
         <li>provide the Order details and relevant evidence.</li>
       </ul>
       <p>We may suspend the associated Account and delivery while the matter is investigated.</p>
@@ -485,7 +486,7 @@ export default function RefundsPolicyPage() {
       </p>
 
       <h2>24. Complaints</h2>
-      <p>Refund-related complaints may be sent to: info@ultrasensskin.com</p>
+      <p>Refund-related complaints may be sent to: {brand.contact.email}</p>
       <p>Please include &ldquo;Refund Complaint&rdquo; and the Order number in the subject line.</p>
       <p>
         We will consider consumer complaints free of charge and provide a reasoned written response as soon as
@@ -518,7 +519,7 @@ export default function RefundsPolicyPage() {
         to exercise that right.
       </p>
       <p>
-        To: ULTRASENS LT, MB, V. Nagevičiaus g. 3, LT-08237 Vilnius, Lithuania. Email: info@ultrasensskin.com
+        To: {brand.company.legalName}, {brandAddressLine}. Email: {brand.contact.email}
       </p>
       <p>I hereby give notice that I withdraw from my contract for the purchase of the following Digital Item:</p>
       <ul>

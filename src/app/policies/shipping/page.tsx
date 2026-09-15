@@ -1,4 +1,5 @@
 import { PolicyLayout, ContactBlock } from "@/components/layout/PolicyLayout/PolicyLayout";
+import { brand } from "@/lib/brand";
 
 export const metadata = { title: "Digital Item Delivery Policy — UltraSensSkin" };
 
@@ -14,7 +15,7 @@ export default function TradeDeliveryPolicyPage() {
       <ContactBlock />
       <p>
         In this Policy, &ldquo;UltraSensSkin&rdquo;, &ldquo;ULTRASENS&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;
-        and &ldquo;our&rdquo; refer to ULTRASENS LT, MB. &ldquo;You&rdquo; and &ldquo;your&rdquo; refer to the
+        and &ldquo;our&rdquo; refer to {brand.company.legalName}. &ldquo;You&rdquo; and &ldquo;your&rdquo; refer to the
         purchaser.
       </p>
 
@@ -189,7 +190,7 @@ export default function TradeDeliveryPolicyPage() {
         <li>you cannot reasonably connect it to your UltraSensSkin Order.</li>
       </ul>
       <p>
-        If you are uncertain, do not accept the offer. Contact info@ultrasensskin.com and provide the Order number
+        If you are uncertain, do not accept the offer. Contact {brand.contact.email} and provide the Order number
         and relevant screenshots.
       </p>
 
@@ -458,7 +459,7 @@ export default function TradeDeliveryPolicyPage() {
       <p>If the disruption continues for an unreasonable period, you may request cancellation and an appropriate refund in accordance with applicable law.</p>
 
       <h2>24. Support and Delivery Complaints</h2>
-      <p>Delivery questions and complaints may be submitted to: info@ultrasensskin.com</p>
+      <p>Delivery questions and complaints may be submitted to: {brand.contact.email}</p>
       <p>Please include &ldquo;Delivery Issue&rdquo; and your Order number in the subject line.</p>
       <p>
         We will review consumer complaints free of charge and provide a reasoned written response as soon as

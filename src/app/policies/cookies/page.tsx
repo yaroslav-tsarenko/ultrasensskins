@@ -1,4 +1,5 @@
 import { PolicyLayout, ContactBlock } from "@/components/layout/PolicyLayout/PolicyLayout";
+import { brand } from "@/lib/brand";
 
 export const metadata = { title: "Cookie Policy — UltraSensSkin" };
 
@@ -6,7 +7,7 @@ export default function CookiePolicyPage() {
   return (
     <PolicyLayout title="Cookie Policy" lastUpdated="9 August 2026">
       <p>
-        This Cookie Policy explains how ULTRASENS LT, MB uses cookies and similar technologies through
+        This Cookie Policy explains how {brand.company.legalName} uses cookies and similar technologies through
         ultrasensskin.com.
       </p>
       <p>
@@ -17,7 +18,7 @@ export default function CookiePolicyPage() {
       <ContactBlock />
       <p>
         In this Policy, &ldquo;UltraSensSkin&rdquo;, &ldquo;ULTRASENS&rdquo;, &ldquo;we&rdquo;,
-        &ldquo;us&rdquo; and &ldquo;our&rdquo; refer to ULTRASENS LT, MB. &ldquo;You&rdquo; and
+        &ldquo;us&rdquo; and &ldquo;our&rdquo; refer to {brand.company.legalName}. &ldquo;You&rdquo; and
         &ldquo;your&rdquo; refer to the individual using the Service.
       </p>
 

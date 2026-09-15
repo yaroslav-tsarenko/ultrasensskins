@@ -36,10 +36,9 @@ Deep navy `#111826` is used for utility strips and the footer.
 
 ## Company
 
-- **RYE FLOUR COOKIES LTD** (Company No. 15854749)
-- Academy House, 11 Dunraven Place, Bridgend, CF31 1JF, United Kingdom
-- Phone: +44 7412 839910
-- Email: info@dropskin.co.uk
+- **CHANGE IT UP SERVICES LTD** (Company No. 16107295)
+- 14 Broadway, Nottingham, NG1 1PS, United Kingdom
+- Email: info@ultrasensskin.com
 
 # dropskin
 # ultrasensskins

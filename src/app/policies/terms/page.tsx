@@ -1,4 +1,5 @@
 import { PolicyLayout, ContactBlock } from "@/components/layout/PolicyLayout/PolicyLayout";
+import { brand } from "@/lib/brand";
 
 export const metadata = { title: "Terms and Conditions — UltraSensSkin" };
 
@@ -14,7 +15,7 @@ export default function TermsPage() {
       <ContactBlock />
       <p>
         In these Terms, &ldquo;UltraSensSkin&rdquo;, &ldquo;ULTRASENS&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;
-        and &ldquo;our&rdquo; refer to ULTRASENS LT, MB. &ldquo;User&rdquo;, &ldquo;you&rdquo; and
+        and &ldquo;our&rdquo; refer to {brand.company.legalName}. &ldquo;User&rdquo;, &ldquo;you&rdquo; and
         &ldquo;your&rdquo; refer to the individual accessing or using the Service.
       </p>
       <p>
@@ -666,7 +667,7 @@ export default function TermsPage() {
       </ul>
 
       <h2>26. Complaints</h2>
-      <p>Complaints may be submitted to: {"info@ultrasensskin.com"}</p>
+      <p>Complaints may be submitted to: {brand.contact.email}</p>
       <p>Please include, where applicable:</p>
       <ul>
         <li>your name;</li>

@@ -1,4 +1,5 @@
 import { PolicyLayout, ContactBlock } from "@/components/layout/PolicyLayout/PolicyLayout";
+import { brand } from "@/lib/brand";
 
 export const metadata = { title: "Payment Policy — UltraSensSkin" };
 
@@ -13,7 +14,7 @@ export default function PaymentPolicyPage() {
       <ContactBlock />
       <p>
         In this Policy, &ldquo;UltraSensSkin&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo; or &ldquo;our&rdquo;
-        means ULTRASENS LT, MB. &ldquo;Customer&rdquo;, &ldquo;you&rdquo; or &ldquo;your&rdquo; means any
+        means {brand.company.legalName}. &ldquo;Customer&rdquo;, &ldquo;you&rdquo; or &ldquo;your&rdquo; means any
         person placing an order through the Website.
       </p>
       <p>
@@ -208,7 +209,7 @@ export default function PaymentPolicyPage() {
       <h2>13. Chargebacks and Payment Disputes</h2>
       <p>
         13.1 If you have a problem with a payment, order, delivery, or refund, please contact us first at
-        info@ultrasensskin.com so we can investigate and try to resolve the issue.
+        {brand.contact.email} so we can investigate and try to resolve the issue.
       </p>
       <p>
         13.2 If you open a chargeback or payment dispute, we may provide information to our payment provider,

@@ -3,7 +3,7 @@
  * Import from here instead of hardcoding company details in components.
  *
  * Company / contact details are env-driven (NEXT_PUBLIC_* so they resolve in
- * both server and client components) with the registered ULTRASENS LT MB
+ * both server and client components) with the registered CHANGE IT UP SERVICES LTD
  * particulars as fallbacks. Set the vars in `.env` to override per-deploy.
  */
 
@@ -11,15 +11,15 @@ const env = (key: string, fallback: string) =>
   (process.env[key] ?? "").trim() || fallback;
 
 const company = {
-  legalName: env("NEXT_PUBLIC_COMPANY_LEGAL_NAME", "ULTRASENS LT MB"),
-  number: env("NEXT_PUBLIC_COMPANY_NUMBER", "308011165"),
+  legalName: env("NEXT_PUBLIC_COMPANY_LEGAL_NAME", "CHANGE IT UP SERVICES LTD"),
+  number: env("NEXT_PUBLIC_COMPANY_NUMBER", "16107295"),
   address: {
-    line1: env("NEXT_PUBLIC_COMPANY_ADDRESS", "V. Nagevičiaus g. 3"),
+    line1: env("NEXT_PUBLIC_COMPANY_ADDRESS", "14 Broadway"),
     line2: env("NEXT_PUBLIC_COMPANY_ADDRESS_LINE2", ""),
-    city: env("NEXT_PUBLIC_COMPANY_CITY", "Vilnius"),
+    city: env("NEXT_PUBLIC_COMPANY_CITY", "Nottingham"),
     region: env("NEXT_PUBLIC_COMPANY_REGION", ""),
-    postcode: env("NEXT_PUBLIC_COMPANY_POSTCODE", "LT-08237"),
-    country: env("NEXT_PUBLIC_COMPANY_COUNTRY", "Lithuania"),
+    postcode: env("NEXT_PUBLIC_COMPANY_POSTCODE", "NG1 1PS"),
+    country: env("NEXT_PUBLIC_COMPANY_COUNTRY", "United Kingdom"),
   },
 } as const;
 

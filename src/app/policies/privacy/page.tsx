@@ -1,4 +1,5 @@
 import { PolicyLayout, ContactBlock } from "@/components/layout/PolicyLayout/PolicyLayout";
+import { brand } from "@/lib/brand";
 
 export const metadata = { title: "Privacy Policy — UltraSensSkin" };
 
@@ -6,20 +7,20 @@ export default function PrivacyPolicyPage() {
   return (
     <PolicyLayout title="Privacy Policy" lastUpdated="9 August 2026">
       <p>
-        This Privacy Policy explains how ULTRASENS LT, MB collects, uses, stores and shares personal data when you
+        This Privacy Policy explains how {brand.company.legalName} collects, uses, stores and shares personal data when you
         access or use ultrasensskin.com, create an account, sign in through Steam, purchase a Digital Item, receive
         a Steam Trade Offer, or contact us.
       </p>
       <p>The Service is operated by:</p>
       <ContactBlock />
       <p>
-        For the purposes of the General Data Protection Regulation (&ldquo;GDPR&rdquo;), ULTRASENS LT, MB is the
+        For the purposes of the General Data Protection Regulation (&ldquo;GDPR&rdquo;), {brand.company.legalName} is the
         controller of the personal data described in this Privacy Policy, except where another organisation
         processes personal data as an independent controller.
       </p>
       <p>
         In this Policy, &ldquo;UltraSensSkin&rdquo;, &ldquo;ULTRASENS&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;
-        and &ldquo;our&rdquo; refer to ULTRASENS LT, MB. &ldquo;You&rdquo; and &ldquo;your&rdquo; refer to the
+        and &ldquo;our&rdquo; refer to {brand.company.legalName}. &ldquo;You&rdquo; and &ldquo;your&rdquo; refer to the
         individual using the Service.
       </p>
 
@@ -43,7 +44,7 @@ export default function PrivacyPolicyPage() {
       <h2>2. Data Controller</h2>
       <p>The controller responsible for the processing described in this Policy is:</p>
       <ContactBlock />
-      <p>Privacy questions and requests may be sent to info@ultrasensskin.com.</p>
+      <p>Privacy questions and requests may be sent to {brand.contact.email}.</p>
       <p>ULTRASENS has not appointed a data protection officer unless updated contact information is published through the Service.</p>
 
       <h2>3. Minimum Age</h2>
@@ -53,7 +54,7 @@ export default function PrivacyPolicyPage() {
         18 has created an Account or used the Service, we may close the Account and delete or restrict the relevant
         data, except where retention is legally required.
       </p>
-      <p>If you believe that a minor has provided personal data to us, contact info@ultrasensskin.com.</p>
+      <p>If you believe that a minor has provided personal data to us, contact {brand.contact.email}.</p>
 
       <h2>4. Categories of Personal Data</h2>
       <p>Depending on how you use the Service, we may process the following categories of personal data.</p>
@@ -427,7 +428,7 @@ export default function PrivacyPolicyPage() {
       <p>You may lodge a complaint with the supervisory authority in Lithuania or, where applicable, the authority in the EEA country of your habitual residence, place of work or alleged infringement.</p>
 
       <h2>15. Exercising Your Rights</h2>
-      <p>Requests may be sent to: info@ultrasensskin.com</p>
+      <p>Requests may be sent to: {brand.contact.email}</p>
       <p>Please use the subject line &ldquo;Data Protection Request&rdquo;.</p>
       <p>Your request should identify:</p>
       <ul>

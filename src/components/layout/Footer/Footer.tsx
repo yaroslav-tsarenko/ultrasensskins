@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import { openCookieSettings } from "@/components/shared/CookieConsent/CookieConsent";
-import { FaDiscord, FaXTwitter, FaInstagram } from "react-icons/fa6";
 import {
   ArrowRight,
   Mail,
@@ -27,9 +26,9 @@ import Image from "next/image";
 import { UltraSensLogo } from "../DropskinLogo";
 import { brand, brandAddressLine } from "@/lib/brand";
 import { useCurrency } from "@/providers/CurrencyProvider";
-import visaLogo from "@/assets/visa-logo.svg";
-import mastercardLogo from "@/assets/mastercard-logo.svg";
-import pciDssLogo from "@/assets/pci-dss-compliant-logo-vector.svg";
+import visaLogo from "@/assets/visa.svg";
+import mastercardLogo from "@/assets/mastercard.svg";
+import pciDssLogo from "@/assets/pci-dss.svg";
 
 const paymentBadges = [
   { src: visaLogo, label: "Visa", pad: "px-3 py-2.5" },
@@ -82,10 +81,13 @@ const trustBadges = [
   { icon: Repeat, label: "Secure card checkout" },
 ];
 
-const socialLinks = [
-  { icon: FaDiscord, label: "Discord", href: "/coming-soon", external: false },
-  { icon: FaXTwitter, label: "X (Twitter)", href: "/coming-soon", external: false },
-  { icon: FaInstagram, label: "Instagram", href: brand.social.instagram, external: true },
+const legalLinks = [
+  { href: "/policies/terms", label: "Terms and Conditions" },
+  { href: "/policies/shipping", label: "Digital Item Delivery Policy" },
+  { href: "/policies/privacy", label: "Privacy Policy" },
+  { href: "/policies/cookies", label: "Cookie Policy" },
+  { href: "/policies/returns", label: "Refund, Cancellation and Withdrawal Policy" },
+  { href: "/policies/payment", label: "Payment Policy" },
 ];
 
 function LinkGroup({ group }: { group: Group }) {
@@ -158,16 +160,13 @@ function LegalGroup() {
         className={`grid grid-cols-1 gap-y-2.5 pb-4 md:gap-y-3 ${open ? "grid" : "hidden md:grid"}`}
         aria-hidden={!open}
       >
-        <li>
-          <Link href="/policies/terms" className="text-[13.5px] text-[color:var(--color-text)]/70 transition-colors hover:text-[color:var(--color-primary)]">
-            Terms of service
-          </Link>
-        </li>
-        <li>
-          <Link href="/policies/privacy" className="text-[13.5px] text-[color:var(--color-text)]/70 transition-colors hover:text-[color:var(--color-primary)]">
-            Privacy policy
-          </Link>
-        </li>
+        {legalLinks.map(({ href, label }) => (
+          <li key={href}>
+            <Link href={href} className="text-[13.5px] text-[color:var(--color-text)]/70 transition-colors hover:text-[color:var(--color-primary)]">
+              {label}
+            </Link>
+          </li>
+        ))}
         <li>
           <button
             type="button"
@@ -177,57 +176,6 @@ function LegalGroup() {
             Cookie preferences
           </button>
         </li>
-      </ul>
-    </div>
-  );
-}
-
-function CommunityGroup() {
-  const [open, setOpen] = useState(false);
-  return (
-    <div className="border-b border-[color:var(--color-text)]/10 md:border-b-0">
-      <button
-        type="button"
-        onClick={() => setOpen((v) => !v)}
-        aria-expanded={open}
-        className="flex w-full items-center justify-between py-4 text-left md:hidden"
-      >
-        <span className="font-display text-[15.5px] font-semibold tracking-tight text-[color:var(--color-text)]">
-          Community
-        </span>
-        <ChevronDown
-          size={15}
-          className={`text-[color:var(--color-accent)] transition-transform ${open ? "rotate-180" : ""}`}
-        />
-      </button>
-      <h3 className="hidden pb-5 font-display text-[16px] font-semibold tracking-tight text-[color:var(--color-text)] md:block">
-        <span className="relative inline-block after:absolute after:-bottom-2 after:left-0 after:h-px after:w-8 after:rounded-full after:bg-[color:var(--color-primary)]">
-          Community
-        </span>
-      </h3>
-      <ul
-        className={`grid grid-cols-1 gap-y-2.5 pb-4 md:gap-y-3 ${open ? "grid" : "hidden md:grid"}`}
-        aria-hidden={!open}
-      >
-        {socialLinks.map(({ icon: Icon, label, href, external }) => {
-          const cls =
-            "inline-flex items-center gap-2 text-[13.5px] text-[color:var(--color-text)]/70 transition-colors hover:text-[color:var(--color-primary)]";
-          return (
-            <li key={label}>
-              {external ? (
-                <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>
-                  <Icon size={14} className="text-[color:var(--color-text-tertiary)]" />
-                  {label}
-                </a>
-              ) : (
-                <Link href={href} className={cls}>
-                  <Icon size={14} className="text-[color:var(--color-text-tertiary)]" />
-                  {label}
-                </Link>
-              )}
-            </li>
-          );
-        })}
       </ul>
     </div>
   );
@@ -294,7 +242,6 @@ export function Footer() {
               <LinkGroup key={g.key} group={g} />
             ))}
             <LegalGroup />
-            <CommunityGroup />
           </div>
         </div>
       </div>
@@ -329,28 +276,6 @@ export function Footer() {
             <div className="inline-flex items-center gap-2 rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-bg-elevated)] px-3 py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-[color:var(--color-text)]/85">
               <Globe size={11} className="text-[color:var(--color-primary)]" />
               <span>{currency} {symbol}</span>
-            </div>
-            <div className="flex items-center gap-3">
-              {socialLinks.map(({ icon: Icon, label, href, external }) => {
-                const cls =
-                  "inline-flex h-8 w-8 items-center justify-center rounded-lg border border-[color:var(--color-border)] bg-[color:var(--color-bg-elevated)] text-[color:var(--color-text)]/75 transition-all hover:border-[color:var(--color-primary)] hover:text-[color:var(--color-primary)]";
-                return external ? (
-                  <a
-                    key={label}
-                    href={href}
-                    aria-label={label}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={cls}
-                  >
-                    <Icon size={14} />
-                  </a>
-                ) : (
-                  <Link key={label} href={href} aria-label={label} className={cls}>
-                    <Icon size={14} />
-                  </Link>
-                );
-              })}
             </div>
           </div>
         </div>
